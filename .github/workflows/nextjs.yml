@@ -24,6 +24,9 @@ concurrency:
   group: "pages"
   cancel-in-progress: false
 
+env:
+  NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "TEST3"
+
 jobs:
   # Build job
   build:
