@@ -4,6 +4,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { gsap } from "gsap"
+import Image from "next/image"
 
     interface Testimonial {
         id: number
@@ -17,50 +18,58 @@ import { gsap } from "gsap"
     {
         id: 1,
         content:
-        "The Griot and Grits Project has revolutionized how we preserve and share our cultural heritage. It's an invaluable resource for future generations.",
-        author: "Dr. Maya Johnson",
-        position: "Historian",
-        avatarUrl: "https://images.unsplash.com/photo-1507152832244-10d45c7eda57?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "It's truly inspiring to collaborate with individuals who are deeply passionate about making history by preserving the past and harnessing AI to bring these stories to life in innovative and meaningful ways.",
+        author: "Demethria Ramseur",
+        position: "Principal Agilist",
+        avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470053/unnamed_2_hioho1.png",
     },
     {
         id: 2,
         content:
-        "This project gives voice to stories that might otherwise have been lost. It's a powerful tool for education and connection across generations.",
+        "Working on this project is like playing in the All-Star game. Surrounded by brilliance, driven by shared passion, and inspired by a team that reflects the diversity of our culture. We're creating something truly exceptional; something that can impact not just a culture, but all its people.  I am honored to be a part of Griot and Grits.",
         author: "Marcus Greene",
-        position: "Community Leader",
-        avatarUrl: "https://images.unsplash.com/photo-1587064712555-6e206484699b?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        position: "Team Member",
+        avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470053/unnamed_1_fnwr24.png",
     },
     {
         id: 3,
         content:
-        "As an educator, I've found this project invaluable in bringing living history into my classroom. It's engaging, authentic, and deeply impactful.",
-        author: "Alicia Thompson",
-        position: "High School Teacher",
-        avatarUrl: "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?q=80&w=1886&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Preserving our community stories is something that has been on my mind a lot lately.   I am so grateful to be able to work on a project that is collecting, organizing, enhancing and sharing our story in a way not seen before. Working on this project has been a joy.  I look forward to all of the great things we can accomplish in the future.",
+        author: "Albert Myles",
+        position: "Manager, Knowledge Management",
+        avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470054/image_1_yonrgl.png",
     },
     {
         id: 4,
         content:
-        "The innovative use of AI in this project has allowed us to uncover connections and insights we never thought possible. It's truly groundbreaking.",
-        author: "Dr. James Wilson",
-        position: "AI Researcher",
-        avatarUrl: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "This project is an opportunity to honor the contributions, resilience, and brilliance of those who came before us while also creating something that will educate and inspire future generations. Personally, Black history is a vital part of my identity and legacy, and professionally, it aligns with my passion for storytelling, empowerment, and ensuring that important narratives are preserved and shared.  I’m grateful to contribute to this project and to collaborate with others who are equally passionate about making an impact on preserving our history. We are our ancestors' wildest dreams.",
+        author: "Koren Townsend",
+        position: "Sr. Project Manager",
+        avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470056/image_fygbiz.png",
     },
     {
         id: 5,
         content:
-        "This project has given me a new appreciation for my family's history. It's like having a time machine to explore our roots.",
-        author: "Tanya George",
-        position: "Project Participant",
-        avatarUrl: "https://images.unsplash.com/photo-1523825036634-aab3cce05919?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "An increasing challenge that black families face is the further we are from the struggles of our ancestors, the harder it is to acknowledge that the struggle ever existed.  Using AI to blend rich historical archives together with oral history will bring new life to these amazing stories.  It’s important we teach future generations about these struggles in ways that are relatable, educational and heart-felt.",
+        author: "Ty McDuffie",
+        position: "Founder",
+        avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470053/unnamed_zovuhs.png",
     },
     {
         id: 6,
         content:
-        "The Griot and Grits Project is more than just a database; it's a living, breathing testament to our resilience and creativity as a community.",
-        author: "Robert SMith",
-        position: "Digital Archivist",
-        avatarUrl: "https://images.unsplash.com/photo-1630328311029-6f8b81627fc3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "Through Griot and Grits, we are taking a significant step towards ensuring that the voices and stories of the Black community are preserved.  We have an aging generation that lived through segregation, fought for equal rights, and witnessed a man step foot on the moon.  It’s critically important that families capture those stories before they are lost forever, and AI is helping us do just that for them.",
+        author: "Sherard Griffin",
+        position: "Senior Director, OpenShift AI Engineering",
+        avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739473412/Picture1_w1clj2.png",
+    },
+    {
+        id: 7,
+        content:
+        "Griot and Grits is a wonderful way to create family memories and share the amazing history of our country through the telling of the stories of our lives. I am excited about how this will open up our history to those generations to come after us in the tradition of the griot - sharing the important happenings of the family and tribe for all to celebrate down through the ages.",
+        author: "Carmen Cauthen",
+        position: "Historian of African American history and Author",
+        avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739473410/Picture2_pzzbzn.png",
     },
     ]
 
@@ -107,15 +116,18 @@ import { gsap } from "gsap"
                 <motion.div
                     key={testimonial.id}
                     className="testimonial-card bg-pink-50 bg-opacity-10 md:border-l backdrop-filter backdrop-blur-lg p-6 cursor-pointer transform transition-all duration-300 hover:scale-105"
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ scale: 0.95 }}
                     onClick={() => handleTestimonialClick(testimonial)}
                 >
-                    <p className="mb-4 line-clamp-4">{testimonial.content}</p>
+                    <p className="line-clamp-3">{testimonial.content}</p>
+                    <p className="text-sm text-neutral-600">Read More...</p>
                     <div className="flex items-center">
-                    <img
+                    <Image
                         src={testimonial.avatarUrl || "/placeholder.svg"}
                         alt={testimonial.author}
-                        className="w-12 h-12 rounded-full bg-cover mr-4"
+                        className="w-12 h-12 rounded-full bg-cover mt-4 mr-4"
+                        width={1000}
+                        height={1000}
                     />
                     <div>
                         <p className="font-semibold">{testimonial.author}</p>
@@ -125,12 +137,12 @@ import { gsap } from "gsap"
                 </motion.div>
                 ))}
             </div>
-            <div className="flex justify-center space-x-2">
+            <div className="flex justify-center mt-4 space-x-2">
             {Array.from({ length: pageCount }).map((_, index) => (
                 <button
                 key={index}
                 onClick={() => handlePageChange(index)}
-                className={`w-3 h-3 rounded-full ${currentPage === index ? "bg-pink-600" : "bg-gray-300"}`}
+                className={`w-3 h-3 rounded-full ${currentPage === index ? "bg-[#a94728]" : "bg-gray-300"}`}
                 />
             ))}
             </div>
@@ -155,10 +167,12 @@ import { gsap } from "gsap"
                 >
                 <p className="text-gray-800 text-lg mb-6">{selectedTestimonial.content}</p>
                 <div className="flex items-center">
-                    <img
+                    <Image
                     src={selectedTestimonial.avatarUrl || "/placeholder.svg"}
                     alt={selectedTestimonial.author}
                     className="w-16 h-16 rounded-full mr-4"
+                    width={1000}
+                    height={1000}
                     />
                     <div>
                     <p className="text-gray-800 font-semibold text-xl">{selectedTestimonial.author}</p>

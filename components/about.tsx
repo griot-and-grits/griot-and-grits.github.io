@@ -42,7 +42,7 @@ const About = () => {
             viewport={{ once: true }}
             className="mb-16 text-center"
             >
-            <h3 className="text-pink-600 tracking-widest font-semibold text-sm mt-6 uppercase">/ Our Purpose</h3>            
+            <h3 className="text-[#a94728] tracking-widest font-semibold text-sm mt-6 uppercase">/ Our Purpose</h3>            
             <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
                 Our mission is to preserve the history of the African American experience one voice at a time using AI and other advanced technologies.
             </p>
@@ -70,7 +70,7 @@ const About = () => {
                     >
                         <SwiperSlide>
                             <Image
-                                src="https://res.cloudinary.com/ducxigdil/image/upload/v1738771857/photo-1617551307538-c9cdb9d71289_flqy5x.jpg"
+                                src="https://res.cloudinary.com/ducxigdil/image/upload/v1739464588/about-3_iin3fu.png"
                                 width={250}
                                 height={350}
                                 className='object-cover h-[320px] sm:h-[400px] w-[280px] rounded-2xl'
@@ -80,17 +80,7 @@ const About = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Image
-                                src="https://res.cloudinary.com/ducxigdil/image/upload/v1738771924/photo-1529245019870-59b249281fd3_htrgci.jpg"
-                                width={250}
-                                height={350}
-                                className='object-cover h-[320px] sm:h-[400px] w-[280px] rounded-2xl'
-                                alt="About Us Image"
-                    
-                            />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <Image
-                            src="https://res.cloudinary.com/ducxigdil/image/upload/v1738771939/photo-1519635451045-a41d4361d495_dbvaxg.jpg"
+                            src="https://res.cloudinary.com/ducxigdil/image/upload/v1739464588/about-2_kecd9x.png"
                             width={250}
                             height={350}
                             className='object-cover h-[320px] sm:h-[400px] w-[280px] rounded-2xl'
@@ -109,7 +99,17 @@ const About = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Image
-                                src="https://res.cloudinary.com/ducxigdil/image/upload/v1738772022/photo-1515657834497-26509e295154_hyu7qz.jpg"
+                                src="https://res.cloudinary.com/ducxigdil/image/upload/v1739464588/about-5_y1c2hw.png"
+                                width={250}
+                                height={350}
+                                className='object-cover h-[320px] sm:h-[400px] w-[280px] rounded-2xl'
+                                alt="About Us Image"
+                    
+                            />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <Image
+                                src="https://res.cloudinary.com/ducxigdil/image/upload/v1738771857/photo-1617551307538-c9cdb9d71289_flqy5x.jpg"
                                 width={250}
                                 height={350}
                                 className='object-cover h-[320px] sm:h-[400px] w-[280px] rounded-2xl'
@@ -129,7 +129,7 @@ const About = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Image
-                            src="https://res.cloudinary.com/ducxigdil/image/upload/v1738772217/photo-1605581815116-7c1f93c8c30c_g3tv1x.jpg"
+                            src="https://res.cloudinary.com/ducxigdil/image/upload/v1738771924/photo-1529245019870-59b249281fd3_htrgci.jpg"
                             width={250}
                             height={350}
                             className='object-cover h-[320px] sm:h-[400px] w-[280px] rounded-2xl'
@@ -139,7 +139,7 @@ const About = () => {
                         </SwiperSlide>
                         <SwiperSlide>
                             <Image
-                            src="https://images.unsplash.com/photo-1528275286191-fa6d2ec8298e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            src="https://res.cloudinary.com/ducxigdil/image/upload/v1739464588/about-8_jwajbx.png"
                             width={250}
                             height={350}
                             className='object-cover h-[320px] sm:h-[400px] w-[280px] rounded-2xl'
@@ -160,10 +160,10 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white/10 rounded-lg p-6 relative border border-purple-500/30"
+                className="bg-white/10 rounded-lg p-6 relative border border-[#a94728]"
                 >
                 <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center">
+                    <div className="flex-shrink-0 w-12 h-12 bg-[#a94728] rounded-full flex items-center justify-center">
                     <span className="text-xl font-bold text-white">{item.number}</span>
                     </div>
                     <div>

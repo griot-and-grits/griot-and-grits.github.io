@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Facebook, Twitter, Linkedin } from 'lucide-react';
+import { Facebook, Twitter, Youtube } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,7 +84,7 @@ const Hero = () => {
         </div>
 
         {/* Side Links */}
-        <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-500 bg-opacity-10 -translate-y-1/2 space-y-4">
+        <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-500 bg-opacity-80 -translate-y-1/2 space-y-4">
             {[
             { href: "#about", title: "Our purpose", subtitle: "who we are" },
             { href: "#services", title: "Work of the Project", subtitle: "what we do" },
@@ -103,21 +103,22 @@ const Hero = () => {
         </nav>
 
         {/* Social Links */}
-        <div className="hidden lg:block text-sm absolute right-0 p-2 top-1/2 z-10 bg-neutral-500 bg-opacity-10 -translate-y-1/2 space-y-4 text-white">
+        <div className="hidden lg:block text-sm absolute right-0 p-2 top-1/2 z-10 bg-neutral-500 bg-opacity-80 -translate-y-1/2 space-y-4 text-white">
             <div className="mb-4 font-medium">Follow Us</div>
             <div className="space-y-4">
             {[
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Twitter, label: "Twitter" },
-                { Icon: Linkedin, label: "LinkedIn" }
-            ].map(({ Icon, label }, index) => (
+                { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+                { Icon: Twitter, label: "Twitter", link: 'https://x.com/GriotandGrits' },
+                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' },
+            ].map(({ Icon, label, link }, index) => (
                 <motion.a
                 key={index}
-                href="#"
+                href={link}
+                target='blank'
                 className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                 whileHover={{ x: -10 }}
                 >
-                <Icon className='text-pink-600' size={14} />
+                <Icon className='text-[#a94728]' size={14} />
                 <span >{label}</span>
                 </motion.a>
             ))}
@@ -128,13 +129,14 @@ const Hero = () => {
             <div className="mb-4 text-center font-medium">Follow Us</div>
             <div className="flex flex-row space-x-4">
             {[
-                { Icon: Facebook, label: "Facebook" },
-                { Icon: Twitter, label: "Twitter" },
-                { Icon: Linkedin, label: "LinkedIn" }
-            ].map(({ Icon }, index) => (
+                { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
+                { Icon: Twitter, label: "Twitter", link: 'https://x.com/GriotandGrits' },
+                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' },
+            ].map(({ Icon, link }, index) => (
                 <motion.a
                     key={index}
-                    href="#"
+                    href={link}
+                    target='blank'
                     className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                     whileHover={{ x: -10 }}
                 >
@@ -157,7 +159,7 @@ const Hero = () => {
             whileHover={{ scale: 1.1 }}
             >
             <motion.div
-                className="w-1 h-2 bg-pink-600 mx-auto mt-2 rounded-full"
+                className="w-1 h-2 bg-[#a94728] mx-auto mt-2 rounded-full"
                 animate={{ y: [0, 20, 0] }}
                 transition={{ repeat: Infinity, duration: 1.5 }}
             />

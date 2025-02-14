@@ -8,7 +8,7 @@ import {
     Facebook, 
     Twitter, 
     Instagram, 
-    Dribbble, 
+    Youtube, 
     X 
 } from 'lucide-react';
 
@@ -20,10 +20,10 @@ const Nav = () => {
     };
 
     const socialLinks = [
-        { Icon: Facebook, href: "facebook.com" },
-        { Icon: Twitter, href: "twitter.com" },
-        { Icon: Instagram, href: "instagram.com" },
-        { Icon: Dribbble, href: "dribble.com" }
+        { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61571179057798' },
+        { Icon: Twitter, href: 'https://x.com/GriotandGrits' },
+        { Icon: Instagram, href: 'https://www.instagram.com/griotngrits/' },
+        { Icon: Youtube, href: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' },
     ];
 
     const navLinks = [
@@ -85,18 +85,18 @@ const Nav = () => {
         >
             <Link href="#home" className="block">
                 <Image 
-                    src="/icon.png" 
+                    src="./icon.png" 
                     alt="Griot and Grits Logo" 
-                    width={150} 
-                    height={110} 
-                    className="w-20 max-w-full h-auto"
+                    width={600} 
+                    height={600} 
+                    className="w-24 md:w-40 max-w-full h-auto"
                 />
                 <Image 
-                    src="/logo.png" 
+                    src="./logo.png" 
                     alt="Griot and Grits Logo" 
-                    width={150} 
-                    height={110} 
-                    className="w-20 max-w-full mt-2 h-auto"
+                    width={600} 
+                    height={600} 
+                    className="w-24 md:w-40 max-w-full mt-2 h-auto"
             />
             </Link>
         </motion.div>
@@ -109,9 +109,9 @@ const Nav = () => {
             onClick={toggleMenu}
             className="fixed right-10 rounded-full bg-black w-12 h-11 flex items-center justify-center z-60 group"
         >
-            <div className="relative w-[20px] h-[2px] bg-white transition-all duration-300 group-hover:bg-pink-600">
-            <div className="absolute -top-[9px] w-full h-full bg-inherit group-hover:bg-pink-600"></div>
-            <div className="absolute -bottom-[9px] w-full h-full bg-inherit group-hover:bg-pink-600"></div>
+            <div className="relative w-[20px] h-[2px] bg-white transition-all duration-300 group-hover:bg-[#a94728]">
+            <div className="absolute -top-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
+            <div className="absolute -bottom-[9px] w-full h-full bg-inherit group-hover:bg-[#a94728]"></div>
             </div>
         </motion.button>
 
@@ -141,7 +141,7 @@ const Nav = () => {
                     variants={textVariants}
                     initial="hidden"
                     animate="visible"
-                    className="text-xs uppercase tracking-widest text-pink-600 mt-1 mb-12"
+                    className="text-xs uppercase tracking-widest text-[#a94728] mt-1 mb-12"
                 >
                     Griot and Grits
                 </motion.h3>
@@ -158,7 +158,7 @@ const Nav = () => {
                         key={index} 
                         variants={itemVariants}
                         whileHover="hover"
-                        className="border-b list-disc border-white/5 last:border-b-0"
+                        className="border-b border-white/5 last:border-b-0"
                     >
                         <Link 
                             href={link.href} 
@@ -176,7 +176,13 @@ const Nav = () => {
                     animate="visible"
                     className="text-sm text-white/50 my-8"
                 >
-                    Perspiciatis hic praesentium nesciunt. Et neque a dolorum <a href="#" className="text-pink-600">voluptatem</a> porro iusto sequi veritatis libero enim.
+                    <Image 
+                        src="./icon.png" 
+                        alt="Griot and Grits Logo" 
+                        width={600} 
+                        height={600} 
+                        className="w-24 md:w-40 max-w-full h-auto"
+                    />
                 </motion.p>
 
                 {/* Social Links */}

@@ -69,7 +69,7 @@ export const MasonryItem: React.FC<GalleryItemProps> = ({
             href={link}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-pink-600 text-white px-4 py-2 rounded-lg self-start"
+            className="bg-[#a94728] text-white px-4 py-2 rounded-lg self-start"
           >
             Learn More
           </motion.a>
