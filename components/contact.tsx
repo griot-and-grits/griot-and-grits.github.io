@@ -52,13 +52,27 @@ const ContactSection: React.FC = () => {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-center mb-16"
+                    className="text-center mb-8"
                 >
                     <a 
                         href="mailto:info@griotandgrits.org" 
-                        className="text-2xl md:text-3xl font-light hover:text-[#a94728] transition-colors"
+                        className="text-2xl md:text-3xl font-light hover:text-[#a94728] transition-colors" target="_blank"
                     >
                         info@griotandgrits.org
+                    </a>
+                </motion.div>
+
+                <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                    className="text-center mb-16"
+                >
+                    <a 
+                        href="https://github.com/griot-and-grits/griot-and-grits" 
+                        className="text-2xl md:text-3xl font-light hover:text-[#a94728] transition-colors" target="_blank"
+                    >
+                        Contribute on GitHub
                     </a>
                 </motion.div>
 

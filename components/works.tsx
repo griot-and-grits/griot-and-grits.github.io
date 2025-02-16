@@ -82,25 +82,46 @@ const FeaturedStories: React.FC = () => {
         <div className="max-w-screen-lg mx-auto">
           <MasonryGallery>
             <MasonryItem 
-              src="https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
-              alt="Ms. Gladys M. Williams thumbnail"
-              title="Ms. Gladys M. Williams"
-              description="Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience and integrity."
-              link="https://www.youtube.com/watch?v=Bwk5yovVvmM&t=1s"
-            />
-            <MasonryItem 
               src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667555/Screenshot_62_wjthuw.png"
               alt="Thumbnail for Mrs. Parks Talks Black Prisoner Cadavers"
               title="Mrs. Parks Talks Black Prisoner Cadavers"
               description="Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
               link="https://www.youtube.com/watch?v=mE1PTJeDBXI"
             />
+            <MasonryItem
+              src="https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
+              alt="Thumbnail for Ms. Gladys M. Williams"
+              title="Ms. Gladys M. Williams"
+              description="Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience and integrity."
+              link="https://www.youtube.com/watch?v=Bwk5yovVvmM"
+            />
+            <MasonryItem 
+              src="https://img.youtube.com/vi/9Nwl-6DRPYI/0.jpg"
+              alt="Thumnail for Youtube Video: Deborah Ragan McCoy"
+              title="Deborah Ragan McCoy"
+              description="Deborah McCoy reflects on her life, starting with her birth in Philadelphia, Pennsylvania in 1949. She explains how she got her name and shares various names she has been called, including Debbie and Elder Deb."
+              link="https://www.youtube.com/watch?v=9Nwl-6DRPYI"
+            />
             <MasonryItem 
               src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667554/Screenshot_61_e3jz6q.png"
               alt="Thumnail for Youtube Video: Sharon McDuffie recalls 911"
-              title="Sharon McDuffie recalls 911"
+              title="Sharon McDuffie Recalls 911"
               description="On the morning of September 11, 2001, she awoke in Raleigh, North Carolina, to the shocking news of a plane crashing into the World Trade Center. As a second plane struck, confirming the attack, a sense of urgency and fear set in."
               link="https://www.youtube.com/watch?v=meR02ie2lYg"
+            />
+            <MasonryItem 
+              src="https://img.youtube.com/vi/1veIaRHpYO0/0.jpg"
+              alt="Thumnail for Youtube Video: Ty McDuffie"
+              title="Ty McDuffie Remembers Meeting His Wife"
+              description="Ty McDuffie, founder of Griot and Grits, shares his personal story about meeting his wife, Sharon Burwell McDuffie, just before Air Force basic training at a MEPS station. They were assigned different flights but managed to connect by passing notes."
+              link="https://www.youtube.com/watch?v=1veIaRHpYO0"
+            />
+            <MasonryItem 
+              src="https://img.youtube.com/vi/Wygd0hwc7iA/0.jpg"
+              alt="Thumnail for Youtube Video: Deborah Ragan McCoy"
+              title="Deborah McCoy Recalls a Historic Snowstorm"
+              description="At just 10 years old, Deborah Ragan McCoy found herself babysitting her aunt’s six children in West Philadelphia—a responsibility far beyond her years. As the evening wore on, an approaching snowstorm made her eager to get home. Determined, she braved the bitter cold and deepening snow, embarking on an arduous four-hour trek."
+              link="https://www.youtube.com/watch?v=Wygd0hwc7iA"
             />
             <MasonryItem 
               src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667110/Screenshot_60_hitkvb.png"
