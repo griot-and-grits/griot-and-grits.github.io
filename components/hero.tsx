@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Facebook, Twitter, Youtube } from 'lucide-react';
+import { Facebook, Twitter, Youtube, Instagram } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +56,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/50" />
 
         <video autoPlay muted className="w-full h-full object-cover absolute top-0 left-0 z-0" playsInline loop preload="none">
-            <source src="hero.mp4" type="video/mp4" />
+            <source src="https://res.cloudinary.com/ducxigdil/video/upload/v1739671689/0216_1_uptqcp.mp4" type="video/mp4" />
             <track
             src="/path/to/captions.vtt"
             kind="subtitles"
@@ -84,7 +84,7 @@ const Hero = () => {
         </div>
 
         {/* Side Links */}
-        <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-500 bg-opacity-80 -translate-y-1/2 space-y-4">
+        <nav className="hidden lg:block absolute left-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4">
             {[
             { href: "#about", title: "Our purpose", subtitle: "who we are" },
             { href: "#services", title: "Work of the Project", subtitle: "what we do" },
@@ -103,13 +103,14 @@ const Hero = () => {
         </nav>
 
         {/* Social Links */}
-        <div className="hidden lg:block text-sm absolute right-0 p-2 top-1/2 z-10 bg-neutral-500 bg-opacity-80 -translate-y-1/2 space-y-4 text-white">
+        <div className="hidden lg:block text-sm absolute right-0 p-2 top-1/2 z-10 bg-neutral-800 bg-opacity-40 -translate-y-1/2 space-y-4 text-white">
             <div className="mb-4 font-medium">Follow Us</div>
             <div className="space-y-4">
             {[
                 { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
                 { Icon: Twitter, label: "Twitter", link: 'https://x.com/GriotandGrits' },
-                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' },
+                { Icon: Instagram, label: "Instagram", link: 'https://www.instagram.com/griotngrits/' },
+                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/@GriotandGrits' },
             ].map(({ Icon, label, link }, index) => (
                 <motion.a
                 key={index}
@@ -118,7 +119,7 @@ const Hero = () => {
                 className="social-link flex items-center gap-2 hover:text-gray-300 transition-colors"
                 whileHover={{ x: -10 }}
                 >
-                <Icon className='text-[#a94728]' size={14} />
+                <Icon className='text-[#a94728] mt-1' size={14} />
                 <span >{label}</span>
                 </motion.a>
             ))}
@@ -131,7 +132,8 @@ const Hero = () => {
             {[
                 { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
                 { Icon: Twitter, label: "Twitter", link: 'https://x.com/GriotandGrits' },
-                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' },
+                { Icon: Instagram, label: "Instagra,", link: 'https://www.instagram.com/griotngrits/' },
+                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/@GriotandGrits' },
             ].map(({ Icon, link }, index) => (
                 <motion.a
                     key={index}

@@ -1,5 +1,5 @@
 "use client";
-import { CldImage } from "next-cloudinary";
+import Image from "next/image";
 
 export default function CustomImage({
     src,
@@ -11,16 +11,12 @@ export default function CustomImage({
     className?: string;
     }) {
     return (
-        <CldImage
-        src={src}
-        alt={alt}
-        width="500"
-        height="500"
-        crop={{
-            type: "auto",
-            source: true,
-        }}
-        className={className}
+        <Image
+            src={src}
+            alt={alt}
+            width="500"
+            height="500"
+            className={className}
         />
-  );
+    );
 }

@@ -16,7 +16,7 @@ const ContactSection: React.FC = () => {
         { icon: Facebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
         { icon: Twitter, link: 'https://x.com/GriotandGrits' },
         { icon: Instagram, link: 'https://www.instagram.com/griotngrits/' },
-        { icon: Youtube, link: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' },
+        { icon: Youtube, link: 'https://www.youtube.com/@GriotandGrits' },
     ];
 
     const handleSubmit = (e: React.FormEvent) => {

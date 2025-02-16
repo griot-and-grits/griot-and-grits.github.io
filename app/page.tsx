@@ -1,5 +1,6 @@
 import About from '@/components/about'
 import ContactSection from '@/components/contact'
+import FAQ from '@/components/faq'
 import Hero from '@/components/hero'
 import Nav from '@/components/nav'
 import Services from '@/components/services'
@@ -17,6 +18,7 @@ const page = () => {
             <Works />
             <Testimonials />
             {/* <Stats /> */}
+            <FAQ />
             <ContactSection />
         </>
     )

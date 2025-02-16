@@ -42,9 +42,9 @@ const About = () => {
             viewport={{ once: true }}
             className="mb-16 text-center"
             >
-            <h3 className="text-[#a94728] tracking-widest font-semibold text-sm mt-6 uppercase">/ Our Purpose</h3>            
+            <h3 className="text-[#a94728] tracking-widest font-semibold text-sm mt-6 mb-4 uppercase">/ Our Purpose</h3>            
             <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
-                Our mission is to preserve the history of the African American experience one voice at a time using AI and other advanced technologies.
+                Our mission is to preserve the history of the Black experience, one voice at a time, through the use of AI and other advanced technologies.
             </p>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-9 py-10">
                 <div className="flex items-center">

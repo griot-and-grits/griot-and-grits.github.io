@@ -27,8 +27,8 @@ import Image from "next/image"
         id: 2,
         content:
         "Working on this project is like playing in the All-Star game. Surrounded by brilliance, driven by shared passion, and inspired by a team that reflects the diversity of our culture. We're creating something truly exceptional; something that can impact not just a culture, but all its people.  I am honored to be a part of Griot and Grits.",
-        author: "Marcus Greene",
-        position: "Team Member",
+        author: "Sidney Hargrove",
+        position: "Associate Director, Clinical Systems & Metrics",
         avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470053/unnamed_1_fnwr24.png",
     },
     {
