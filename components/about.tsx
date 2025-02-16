@@ -13,22 +13,22 @@ const About = () => {
         {
         number: '1',
         title: 'Record',
-        description: 'Create a comprehensive, searchable library of recorded oral and video accounts of the lives of local African Americans.'
+        description: 'Help families digitize and catalog interviews, family photos, videos, and important historical documents.'
         },
         {
         number: '2',
-        title: 'Improve',
-        description: 'Use AI to highlight key events from the recorded content and associate them with similar events to create a richer story.'
+        title: 'Collect',
+        description: 'Generate metadata to create a comprehensive, searchable library of recorded stories of the lives of Black people.'
         },
         {
         number: '3',
-        title: 'Display',
-        description: 'Generate a geographical representation of the stories to allow individuals to search by location.'
+        title: 'Improve',
+        description: 'Recreate a documentary-like view of individual stories with the assistance of AI to augment key events with additional relevant background information, photos and videos.'
         },
         {
         number: '4',
-        title: 'Collect',
-        description: 'Recreate a documentary-like view of individual stories with the assistance of AI to augment key events with additional relevant background information, photos and videos.'
+        title: 'Display',
+        description: 'Build referencable family chapters containing AI-enhanced content for individuals to find out more about their unique family history along with others.'
         }
     ];
 

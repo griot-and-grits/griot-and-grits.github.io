@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Facebook, Twitter, Youtube, Instagram } from 'lucide-react';
+import { Github, Facebook, Twitter, Youtube, Instagram, X } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +56,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-black/50" />
 
         <video autoPlay muted className="w-full h-full object-cover absolute top-0 left-0 z-0" playsInline loop preload="none">
-            <source src="https://res.cloudinary.com/ducxigdil/video/upload/v1739671689/0216_1_uptqcp.mp4" type="video/mp4" />
+            <source src="/media/vid/website_background_video.mp4" type="video/mp4" />
             <track
             src="/path/to/captions.vtt"
             kind="subtitles"
@@ -107,10 +107,11 @@ const Hero = () => {
             <div className="mb-4 font-medium">Follow Us</div>
             <div className="space-y-4">
             {[
+                { Icon: Github, label: "GitHub", link: 'https://github.com/griot-and-grits/griot-and-grits' },
                 { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-                { Icon: Twitter, label: "Twitter", link: 'https://x.com/GriotandGrits' },
+                { Icon: X, label: "X", link: 'https://x.com/GriotandGrits' },
                 { Icon: Instagram, label: "Instagram", link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/@GriotandGrits' },
+                { Icon: Youtube, label: "YouTube", link: 'https://www.youtube.com/@GriotandGrits' }
             ].map(({ Icon, label, link }, index) => (
                 <motion.a
                 key={index}
@@ -130,10 +131,11 @@ const Hero = () => {
             <div className="mb-4 text-center font-medium">Follow Us</div>
             <div className="flex flex-row space-x-4">
             {[
+                { Icon: Github, link: 'https://github.com/griot-and-grits/griot-and-grits' },
                 { Icon: Facebook, label: "Facebook", link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-                { Icon: Twitter, label: "Twitter", link: 'https://x.com/GriotandGrits' },
+                { Icon: X, label: "X", link: 'https://x.com/GriotandGrits' },
                 { Icon: Instagram, label: "Instagra,", link: 'https://www.instagram.com/griotngrits/' },
-                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/@GriotandGrits' },
+                { Icon: Youtube, label: "Youtube", link: 'https://www.youtube.com/@GriotandGrits' }
             ].map(({ Icon, link }, index) => (
                 <motion.a
                     key={index}

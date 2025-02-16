@@ -62,7 +62,7 @@ export const faqItems = [
     {
         question: "How does the project use technology?",
         answer:
-        "Griot and Grits leverages Red Hat OpenShift AI running in the Mass Open Cloud infrastructure to accelerate the creation of AI tools that enrich the stories from Black families. The project also utilizes important Black History archives from the National Museum of African American History and Culture to train AI models and enhance the stories captured.",
+        "Griot and Grits leverages open source AI platforms from Red Hat running in the Mass Open Cloud infrastructure to accelerate the creation of AI tools that enrich the stories from Black families. The project also utilizes important Black History archives from the National Museum of African American History and Culture to train AI models and enhance the stories captured.",
     },
     {
         question: "How can I get involved?",
@@ -80,13 +80,13 @@ export const faqItems = [
         "The project currently partners with Shaw University students, fostering an environment of learning and collaboration. Students are provided with the skills and knowledge needed to create and share their stories, contributing to the preservation of Black history.  If interested in becoming a partner, email us at outreach@griotandgrits.org.",
     },
     {
-        question: "What is the significance of the collaboration with the National Museum of African American History and Culture?",
+        question: "What is the significance using archives from the National Museum of African American History and Culture?",
         answer:
-        "This collaboration provides Griot and Grits with access to important Black History archives, which are used to train AI models and enhance the stories captured. The partnership ensures that the rich narratives of the Black community are preserved in a meaningful and accurate manner.",
+        "This provides Griot and Grits with access to important Black History archives, which are used to train AI models and enhance the stories captured. This ensures that the rich narratives of the Black community are preserved in a meaningful and accurate manner.",
     },
     {
         question: "Who can I contact for more information?",
         answer:
-        "For additional information regarding the Griot and Grits initiative, please visit or contact us via email at info@griotandgrits.org.",
+        "For additional information regarding the Griot and Grits initiative, please contact us via email at info@griotandgrits.org or subscribe to our mailing list.",
     },
 ]

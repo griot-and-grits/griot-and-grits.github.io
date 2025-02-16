@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   singing, poet, historian of the village that was tasked with passing on the history of the village orally.
   Our mission is to preserve the history of the African American experience one voice at a time using AI 
   and other advanced technologies.`,
-  keywords: "African American experience, AI technology, content enrichment, metadata extraction, searchable index",
+  keywords: "Black experience, African American experience, AI technology, content enrichment, metadata extraction, searchable index",
 };
 
 export default function RootLayout({

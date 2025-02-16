@@ -49,7 +49,7 @@ const services: Service[] = [
         searchability, enhances product discovery, and provides valuable insights for better decision-making.`
     },
     {   
-        icon: "🔍", 
+        icon: "📋", 
         title: "AI Annotation",
         excerpt: "Smart labeling system for enhanced machine learning comprehension.",
         description: `AI annotation is the practice of labeling or tagging data to make it comprehensible for machine learning models. It involves adding 

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
+    Github,
     Facebook, 
     Twitter, 
     Instagram, 
@@ -20,10 +21,11 @@ const Nav = () => {
     };
 
     const socialLinks = [
+        { Icon: Github, href: 'https://github.com/griot-and-grits/griot-and-grits' },
         { Icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61571179057798' },
-        { Icon: Twitter, href: 'https://x.com/GriotandGrits' },
+        { Icon: X, href: 'https://x.com/GriotandGrits' },
         { Icon: Instagram, href: 'https://www.instagram.com/griotngrits/' },
-        { Icon: Youtube, href: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' },
+        { Icon: Youtube, href: 'https://www.youtube.com/channel/uc2yrl_f5f1zcl36qalvj2og' }
     ];
 
     const navLinks = [

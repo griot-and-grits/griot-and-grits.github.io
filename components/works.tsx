@@ -83,31 +83,45 @@ const FeaturedStories: React.FC = () => {
           <MasonryGallery>
             <MasonryItem 
               src="https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
-              alt="Ms Glady's M. Williams thumbnail"
-              title="Ms Glady's M. Williams"
-              description="Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience, integrity..."
+              alt="Ms. Gladys M. Williams thumbnail"
+              title="Ms. Gladys M. Williams"
+              description="Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience and integrity."
               link="https://www.youtube.com/watch?v=Bwk5yovVvmM&t=1s"
-            />
-            <MasonryItem 
-              src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667110/Screenshot_60_hitkvb.png"
-              alt="Thumbnail for McCoy Family Concept YouTube Video"
-              title="McCoy Family Concept Video"
-              description="Deborah McCoy reflects on her life, from her birth in Philadelphia in 1949 to the different names she has been called, symbolizing her personal growth. She shares insights into her family, highlighting her hardworking father and determined mother..."
-              link="https://www.youtube.com/watch?v=i7KdDb4nv7U"
-            />
-            <MasonryItem 
-              src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667554/Screenshot_61_e3jz6q.png"
-              alt="Thumnail for Youtube VIdeo: Sharon McDuffie recalls 911"
-              title="Sharon McDuffie recalls 911"
-              description="On the morning of September 11, 2001, she awoke in Raleigh, North Carolina, to the shocking news of a plane crashing into the World Trade Center. As a second plane struck, confirming the attack, a sense of urgency and fear set in. Watching the..."
-              link="https://www.youtube.com/watch?v=meR02ie2lYg"
             />
             <MasonryItem 
               src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667555/Screenshot_62_wjthuw.png"
               alt="Thumbnail for Mrs. Parks Talks Black Prisoner Cadavers"
               title="Mrs. Parks Talks Black Prisoner Cadavers"
-              description="Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools..."
+              description="Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
               link="https://www.youtube.com/watch?v=mE1PTJeDBXI"
+            />
+            <MasonryItem 
+              src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667554/Screenshot_61_e3jz6q.png"
+              alt="Thumnail for Youtube Video: Sharon McDuffie recalls 911"
+              title="Sharon McDuffie recalls 911"
+              description="On the morning of September 11, 2001, she awoke in Raleigh, North Carolina, to the shocking news of a plane crashing into the World Trade Center. As a second plane struck, confirming the attack, a sense of urgency and fear set in."
+              link="https://www.youtube.com/watch?v=meR02ie2lYg"
+            />
+            <MasonryItem 
+              src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667110/Screenshot_60_hitkvb.png"
+              alt="Thumbnail for McCoy Family Concept YouTube Video"
+              title="McCoy Family Concept Video"
+              description="See a concept video of how AI will enhance the stories of the McCoy Family."
+              link="https://www.youtube.com/watch?v=i7KdDb4nv7U"
+            />
+            <MasonryItem 
+              src="https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
+              alt="Thumbnail for Gladys M. Williams Concept YouTube Video"
+              title="Gladys M. Williams Concept Video"
+              description="See a concept video of how AI will enhance the stories of Gladys M. Williams."
+              link="https://www.youtube.com/watch?v=f3NWsd0yddk"
+            />
+            <MasonryItem 
+              src="/media/img/launch_video_thumbnail.png"
+              alt="Thumbnail for Griot and Grits Launch YouTube Video"
+              title="Griot and Grits - How it Works"
+              description="Watch how the Griot and Grits community brings the stories of black families to life."
+              link="https://www.youtube.com/watch?v=sO3GO_ghEXk"
             />
           </MasonryGallery>
         </div>

@@ -3,20 +3,23 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
+    Github,
     Facebook, 
     Twitter, 
     Instagram,
-    Youtube 
+    Youtube,
+    X 
 } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
     const [email, setEmail] = useState('');
 
     const socialLinks = [
+        { icon: Github, link: 'https://github.com/griot-and-grits/griot-and-grits' },
         { icon: Facebook, link: 'https://www.facebook.com/profile.php?id=61571179057798' },
-        { icon: Twitter, link: 'https://x.com/GriotandGrits' },
+        { icon: X, link: 'https://x.com/GriotandGrits' },
         { icon: Instagram, link: 'https://www.instagram.com/griotngrits/' },
-        { icon: Youtube, link: 'https://www.youtube.com/@GriotandGrits' },
+        { icon: Youtube, link: 'https://www.youtube.com/@GriotandGrits' }
     ];
 
     const handleSubmit = (e: React.FormEvent) => {

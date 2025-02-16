@@ -67,10 +67,10 @@ export const MasonryItem: React.FC<GalleryItemProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 text-white p-2 flex flex-col justify-end bg-opacity-50"
+            className="absolute inset-0 text-white p-2 flex flex-col justify-end bg-opacity-65 bg-[#000000]"
           >
             <h3 className="text-sm leading-snug md:text-lg font-bold">{title}</h3>
-            <p className="text-xs mb-2 line-clamp-3">{description}</p>
+            <p className="text-sm mb-2 line-clamp-3">{description}</p>
             
             {link && (
               <motion.a
