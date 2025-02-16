@@ -155,7 +155,7 @@ const Services: React.FC = () => {
                     transition={{ duration: 0.8 }}
                     className="text-lg font-bold text-neutral-500 max-w-4xl mx-auto text-center mb-4"
                 >
-                    Bringing the African American experience to life for our generation and generations to come through:
+                    Bringing the Black experience to life for our generation and generations to come through:
                 </motion.h2>
                 <motion.div
                     ref={ref}

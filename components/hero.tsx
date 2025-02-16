@@ -77,7 +77,7 @@ const Hero = () => {
             <h1 className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-8">
                 Welcome to the Griot and Grits Project
             </h1>
-            <p className='text-2xl'>
+            <p className='text-xs md:text-xl'>
                 Black Voices Worth Remembering, Black History Worth Sharing
             </p>
             </motion.div>
