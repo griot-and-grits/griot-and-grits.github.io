@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
     Github,
     Facebook, 
-    Twitter, 
     Instagram, 
     Youtube, 
     X 

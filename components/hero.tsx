@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { Github, Facebook, Twitter, Youtube, Instagram, X } from 'lucide-react';
+import { Github, Facebook, Youtube, Instagram, X } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
