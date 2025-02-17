@@ -47,7 +47,6 @@ const FeaturedStories: React.FC = () => {
                   width="100%"
                   height="100%"
                   src={`https://www.youtube.com/embed/${selectedVideo.youtubeId}`}
-                  title={selectedVideo.title}
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -63,7 +62,7 @@ const FeaturedStories: React.FC = () => {
                     <div className="relative aspect-video overflow-hidden rounded-lg">
                       <Image
                         src={video.thumbnail || "/placeholder.svg"}
-                        alt={video.title}
+                        alt="Youtube Video Thumbnail"
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
@@ -71,7 +70,6 @@ const FeaturedStories: React.FC = () => {
                         <Play className="h-8 w-8 text-white" />
                       </div>
                     </div>
-                    <p className="mt-2 text-sm text-white">{video.title}</p>
                   </div>
                 ))}
               </div>

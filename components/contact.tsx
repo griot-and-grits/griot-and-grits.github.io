@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
     Github,
@@ -9,9 +9,40 @@ import {
     Youtube,
     X 
 } from 'lucide-react';
+import LoadingDots from './loading-dots';
 
 const ContactSection: React.FC = () => {
-    const [email, setEmail] = useState('');
+    const inputRef = useRef<HTMLInputElement>(null);
+    const [message, setMessage] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
+
+    const subscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+
+        const res = await fetch(`api/subscribe`, {
+        body: JSON.stringify({
+            email: inputRef.current!.value
+        }),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST'
+        });
+
+        const { error } = await res.json();
+
+        if (error) {
+        setMessage(error);
+        setLoading(false);
+
+        return;
+        }
+
+        inputRef.current!.value = '';
+        setMessage('You are now subscribed to our newsletter!');
+        setLoading(false);
+    };
 
     const socialLinks = [
         { icon: Github, link: 'https://github.com/griot-and-grits/griot-and-grits' },
@@ -20,12 +51,6 @@ const ContactSection: React.FC = () => {
         { icon: Instagram, link: 'https://www.instagram.com/griotngrits/' },
         { icon: Youtube, link: 'https://www.youtube.com/@GriotandGrits' }
     ];
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        // Add subscription logic
-        console.log('Subscribed:', email);
-    };
 
     return (
         <section id="contact" className="relative bg-black/90 text-white pt-24 pb-6 px-4">
@@ -113,22 +138,25 @@ const ContactSection: React.FC = () => {
                             ))}
                         </div>
 
-                        <form onSubmit={handleSubmit} className="relative">
+                        <form onSubmit={subscribe} className="relative">
                             <input 
-                                type="email" 
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="Email Address" 
+                                id="email-address"
+                                name="email"
+                                type="email"
                                 required
+                                placeholder="Enter your email"
+                                ref={inputRef}
                                 className="w-full bg-white/10 px-4 py-3 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#a94728]"
                             />
                             <button 
                                 type="submit" 
                                 className="absolute right-1 top-1/2 -translate-y-1/2 bg-[#a94728] text-white p-2 rounded-full hover:opacity-70 duration-300 transition-all"
                             >
-                                Subscribe
+                                {loading ? <LoadingDots className="mb-3 bg-[#a94728]" /> : <p>Subscribe</p>}
                             </button>
                         </form>
+
+                        <p className="mt-2 text-center  text-white">{message ? message : ``}</p>
                     </motion.div>
                 </div>
 

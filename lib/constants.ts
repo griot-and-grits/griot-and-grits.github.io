@@ -1,42 +1,36 @@
 export const videos = [
     {
         id: 1,
-        title: "Emiliana",
         thumbnail:
             "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png",
         youtubeId: "wDchsz8nmbo",
     },
     {
         id: 2,
-        title: "Bad Intentions",
         thumbnail:
             "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/Screenshot_2025-02-11_150144_jbyebe.png",
         youtubeId: "K4TOrB7at0Y",
     },
     {
         id: 3,
-        title: "Star Life",
         thumbnail:
             "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/Screenshot_2025-02-11_152722_i57der.png",
         youtubeId: "Qra4ri7UzvM",
     },
     {
         id: 4,
-        title: "Pretty Like",
         thumbnail:
             "https://res.cloudinary.com/ducxigdil/image/upload/v1739470991/Screenshot_2025-02-11_152543_kvpd4d.png",
         youtubeId: "wDchsz8nmbo",
     },
     {
         id: 5,
-        title: "4U Remix",
         thumbnail:
             "https://res.cloudinary.com/ducxigdil/image/upload/v1739470991/Screenshot_2025-02-11_150236_s9vlrd.png",
         youtubeId: "K4TOrB7at0Y",
     },
     {
         id: 6,
-        title: "Nwayi",
         thumbnail:
             "https://res.cloudinary.com/ducxigdil/image/upload/v1739470992/Screenshot_2025-02-11_150215_ltvzvz.png",
         youtubeId: "Qra4ri7UzvM",
@@ -62,17 +56,17 @@ export const faqItems = [
     {
         question: "How does the project use technology?",
         answer:
-        "Griot and Grits leverages open source AI platforms from Red Hat running in the Mass Open Cloud infrastructure to accelerate the creation of AI tools that enrich the stories from Black families. The project also utilizes important Black History archives from the National Museum of African American History and Culture to train AI models and enhance the stories captured.",
+        "Griot and Grits leverages Red Hat OpenShift AI running in the Mass Open Cloud infrastructure to accelerate the creation of AI tools that enrich the stories from Black families. The project also utilizes important Black History archives from the National Museum of African American History and Culture to train AI models and enhance the stories captured.",
     },
     {
         question: "How can I get involved?",
         answer:
-        "Volunteers and contributors are essential to the success of Griot and Grits. To get involved, visit  or join the project on GitHub. Your participation will help bring this vision to life and support the preservation of Black stories.",
+        "Volunteers and contributors are essential to the success of Griot and Grits. To get involved, visit  or join the project on https://github.com/griot-and-grits/griot-and-grits. Your participation will help bring this vision to life and support the preservation of Black stories.",
     },
     {
         question: "When will the stories be available?",
         answer:
-        `The community is dedicated to making the stories captured publicly accessible in the upcoming months. Stay tuned for updates on our website and GitHub repository.`,
+        `The community is dedicated to making the stories captured publicly accessible in the upcoming months. Stay tuned for updates on our https://www.griotandgrits.org/ and https://github.com/griot-and-grits/griot-and-grits repository.`,
     },
     {
         question: "How does Griot and Grits support education?",
@@ -80,13 +74,13 @@ export const faqItems = [
         "The project currently partners with Shaw University students, fostering an environment of learning and collaboration. Students are provided with the skills and knowledge needed to create and share their stories, contributing to the preservation of Black history.  If interested in becoming a partner, email us at outreach@griotandgrits.org.",
     },
     {
-        question: "What is the significance using archives from the National Museum of African American History and Culture?",
+        question: "What is the significance of the collaboration with the National Museum of African American History and Culture?",
         answer:
-        "This provides Griot and Grits with access to important Black History archives, which are used to train AI models and enhance the stories captured. This ensures that the rich narratives of the Black community are preserved in a meaningful and accurate manner.",
+        "This collaboration provides Griot and Grits with access to important Black History archives, which are used to train AI models and enhance the stories captured. The partnership ensures that the rich narratives of the Black community are preserved in a meaningful and accurate manner.",
     },
     {
         question: "Who can I contact for more information?",
         answer:
-        "For additional information regarding the Griot and Grits initiative, please contact us via email at info@griotandgrits.org or subscribe to our mailing list.",
+        "For additional information regarding the Griot and Grits initiative, please visit or contact us via email at info@griotandgrits.org.",
     },
 ]

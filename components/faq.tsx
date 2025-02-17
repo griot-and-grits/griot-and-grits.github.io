@@ -1,49 +1,30 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { faqItems } from "@/lib/constants"
+import { convertLinksToAnchors } from "@/lib/utils"
 
 type FAQItem = {
-    question: string
-    answer: string
+  question: string
+  answer: string
 }
 
-    interface FAQProps {
-    items: FAQItem[]
-}
-
-function convertLinksToAnchors(text: string): string {
-    // Regex for emails
-    const emailRegex = /([a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+)/gi
-    // Regex for URLs
-    const urlRegex = /(https?:\/\/[^\s]+)/gi
-
-    // Replace emails with mailto links
-    text = text.replace(emailRegex, '<a href="mailto:$1" class="text-blue-500 hover:underline">$1</a>')
-
-    // Replace URLs with clickable links
-    text = text.replace(
-        urlRegex,
-        '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:underline">$1</a>',
-    )
-
-    return text
+interface FAQProps {
+  items: FAQItem[]
 }
 
 export function FAQItem({ items }: FAQProps) {
-    return (
-        <Accordion type="single" collapsible className="w-full">
-        {items.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-            <AccordionTrigger>{item.question}</AccordionTrigger>
-            <AccordionContent>
-                <div dangerouslySetInnerHTML={{ __html: convertLinksToAnchors(item.answer) }} />
-            </AccordionContent>
-            </AccordionItem>
-        ))}
-        </Accordion>
-    )
+  return (
+    <Accordion type="single" collapsible className="w-full">
+      {items.map((item, index) => (
+        <AccordionItem key={index} value={`item-${index}`}>
+          <AccordionTrigger>{item.question}</AccordionTrigger>
+          <AccordionContent>
+            <div dangerouslySetInnerHTML={{ __html: convertLinksToAnchors(item.answer) }} />
+          </AccordionContent>
+        </AccordionItem>
+      ))}
+    </Accordion>
+  )
 }
-
-
 
 export default function FAQ() {
     return (
