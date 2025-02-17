@@ -37,7 +37,7 @@ const FeaturedStories: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-left mb-12"
         >
-          <h2 className="max-w-4xl mx-auto text-4xl font-bold mb-4">Discover and watch the rich tapestry of African American experiences</h2>
+          <h2 className="max-w-4xl mx-auto text-4xl font-bold mb-4">Discover and watch the rich tapestry of Black experiences</h2>
         </motion.div>
 
           {/*<div className="mx-auto max-w-5xl sm:px-6 lg:px-8">
