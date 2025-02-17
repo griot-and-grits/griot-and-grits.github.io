@@ -26,6 +26,9 @@ concurrency:
 
 env:
   NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "dripuecuk"
+  MAILCHIMP_API_KEY: "ead4e580fe3a458f72e577610e603d56-us15"
+  MAILCHIMP_API_SERVER: "us15"
+  MAILCHIMP_AUDIENCE_ID: "5856e05451"
 
 jobs:
   # Build job

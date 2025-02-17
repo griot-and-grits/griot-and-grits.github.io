@@ -81,8 +81,8 @@ const FeaturedStories: React.FC = () => {
           <MasonryGallery>
             <MasonryItem 
               src="https://res.cloudinary.com/ducxigdil/image/upload/v1739667555/Screenshot_62_wjthuw.png"
-              alt="Thumbnail for Mrs. Parks Talks Black Prisoner Cadavers"
-              title="Mrs. Parks Talks Black Prisoner Cadavers"
+              alt="Thumbnail for Mrs. Clark Talks Black Prisoner Cadavers"
+              title="Mrs. Clark Talks Black Prisoner Cadavers"
               description="Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
               link="https://www.youtube.com/watch?v=mE1PTJeDBXI"
             />
