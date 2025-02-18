@@ -46,7 +46,7 @@ export const faqItems = [
     {
         question: "Who is involved in Griot and Grits?",
         answer:
-        `Griot and Grits is a collaboration between Red Hat's Black United in Leadership Development  (B.U.I.L.D.) organization, historians, and leaders in the African American community. Key advisors include Carmen Cauthen, a historian and author of "Historic Black Neighborhoods of Raleigh." The project also partners with students from Shaw University and the National Museum of African American History and Culture.`,
+        `Griot and Grits is a collaboration between Red Hat's Black United in Leadership and Diversity (B.U.I.L.D.) organization, historians, and leaders in the African American community. Key advisors include Carmen Cauthen, a historian and author of "Historic Black Neighborhoods of Raleigh." The project also partners with students from Shaw University and uses archives from the National Museum of African American History and Culture.`,
     },
     {
         question: "What are the goals of the project?",
@@ -74,14 +74,14 @@ export const faqItems = [
         "The project currently partners with Shaw University students, fostering an environment of learning and collaboration. Students are provided with the skills and knowledge needed to create and share their stories, contributing to the preservation of Black history.  If interested in becoming a partner, email us at outreach@griotandgrits.org.",
     },
     {
-        question: "What is the significance of the collaboration with the National Museum of African American History and Culture?",
+        question: "What is the significance of using archives from the National Museum of African American History and Culture?",
         answer:
-        "This collaboration provides Griot and Grits with access to important Black History archives, which are used to train AI models and enhance the stories captured. The partnership ensures that the rich narratives of the Black community are preserved in a meaningful and accurate manner.",
+        "This provides Griot and Grits with access to important Black History archives, which are used to train AI models and enhance the stories captured. The partnership ensures that the rich narratives of the Black community are preserved in a meaningful and accurate manner.",
     },
     {
         question: "Who can I contact for more information?",
         answer:
-        "For additional information regarding the Griot and Grits initiative, please visit or contact us via email at info@griotandgrits.org.",
+        "For additional information regarding the Griot and Grits initiative, please visit github.com/griot-and-grits or contact us via email at info@griotandgrits.org.",
     },
 ]
 
