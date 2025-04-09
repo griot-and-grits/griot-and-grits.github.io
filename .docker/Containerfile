@@ -26,7 +26,7 @@ RUN microdnf -y upgrade && \
 
 # Copy build files from builder stage
 COPY --from=builder /app/out /usr/share/nginx/html
-COPY .docker/nginx.conf /etc/nginx/conf.d/default.conf
+COPY .docker/nginx.conf /etc/nginx/nginx.conf
 
 # Link nginx logs to stderr and stdout
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
