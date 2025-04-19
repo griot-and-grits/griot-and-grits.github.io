@@ -76,7 +76,7 @@ export const faqItems = [
     {
         question: "Who can I contact for more information?",
         answer:
-        "For additional information regarding the Griot and Grits initiative, please visit github.com/griot-and-grits or contact us via email at info@griotandgrits.org.",
+        "For more information regarding the Griot and Grits initiative, please visit github.com/griot-and-grits or contact us via email at info@griotandgrits.org.",
     },
 ]
 
