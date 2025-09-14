@@ -32,6 +32,7 @@ const Nav = () => {
         { label: 'Our Purpose', href: '#about' },
         { label: 'Work of the Project', href: '#services' },
         { label: 'Works', href: '#works' },
+        { label: 'Our Collection', href: '/collection' },
         { label: 'Contributing', href: '#contact' }
     ];
 

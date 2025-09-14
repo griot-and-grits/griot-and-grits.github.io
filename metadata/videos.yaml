@@ -1,0 +1,179 @@
+videos:
+  - id: "1"
+    thumbnail: "/media/img/launch_video_thumbnail.png"
+    title: "Civil Rights Movement Memories"
+    interviewees: 
+      - "Dorothy Williams"
+      - "Rev. Fred Shuttlesworth"
+    description: "Dorothy and Rev. Shuttlesworth share their experiences during the Civil Rights Movement in Birmingham, Alabama, including their participation in the Children's Crusade of 1963."
+    duration: "42:15"
+    locations:
+      - name: "Birmingham, Alabama"
+        coordinates: [33.5186, -86.8104]
+      - name: "Selma, Alabama"
+        coordinates: [32.4074, -87.0211]
+    tags:
+      - "Civil Rights"
+      - "Birmingham"
+      - "1960s"
+      - "Children's Crusade"
+      - "Church Leadership"
+      - "Protest Strategy"
+    topics:
+      - "Civil Rights Movement"
+      - "Education"
+      - "Social Justice"
+    people:
+      - "Dorothy Williams"
+      - "Rev. Fred Shuttlesworth"
+      - "Martin Luther King Jr."
+      - "Bull Connor"
+
+  - id: "2"
+    thumbnail: "/media/img/launch_video_thumbnail.png"
+    title: "Migration Stories from the South"
+    interviewees: 
+      - "James Thompson"
+      - "Mary Thompson"
+    description: "James and Mary Thompson recount their family's journey from rural Mississippi to Chicago during the Great Migration, and the challenges they faced."
+    duration: "38:22"
+    locations:
+      - name: "Clarksdale, Mississippi"
+        coordinates: [34.2003, -90.5706]
+      - name: "Chicago, Illinois"
+        coordinates: [41.8781, -87.6298]
+      - name: "Detroit, Michigan"
+        coordinates: [42.3314, -83.0458]
+    tags:
+      - "Great Migration"
+      - "Mississippi"
+      - "Chicago"
+      - "Family History"
+      - "Marriage"
+      - "Labor Movement"
+    topics:
+      - "Great Migration"
+      - "Family Stories"
+      - "Economic Opportunity"
+    people:
+      - "James Thompson"
+      - "Mary Thompson"
+      - "Thompson Family"
+
+  - id: "3"
+    thumbnail: "/media/img/launch_video_thumbnail.png"
+    title: "Preserving Cultural Traditions"
+    interviewees: 
+      - "Maria Santos"
+    description: "Maria discusses how her community maintained their cultural traditions through music, food, and storytelling across generations."
+    duration: "29:47"
+    locations:
+      - name: "New Orleans, Louisiana"
+        coordinates: [29.9511, -90.0715]
+      - name: "Lafayette, Louisiana"
+        coordinates: [30.2241, -92.0198]
+    tags:
+      - "Cultural Traditions"
+      - "Music"
+      - "Food"
+      - "Community"
+      - "Storytelling"
+      - "Recipes"
+    topics:
+      - "Cultural Preservation"
+      - "Music Traditions"
+      - "Community"
+    people:
+      - "Maria Santos"
+      - "Santos Family"
+
+  - id: "4"
+    thumbnail: "/media/img/launch_video_thumbnail.png"
+    title: "Voices from the Montgomery Bus Boycott"
+    interviewees: 
+      - "Robert Johnson"
+      - "Virginia Durr"
+    description: "Robert and Virginia share their firsthand accounts of participating in the Montgomery Bus Boycott and the community organizing that made it successful."
+    duration: "45:32"
+    locations:
+      - name: "Montgomery, Alabama"
+        coordinates: [32.3617, -86.2792]
+      - name: "Birmingham, Alabama"
+        coordinates: [33.5186, -86.8104]
+    tags:
+      - "Montgomery Bus Boycott"
+      - "Civil Rights"
+      - "Community Organizing"
+      - "Rosa Parks"
+      - "White Allies"
+      - "Economic Pressure"
+    topics:
+      - "Civil Rights Movement"
+      - "Transportation"
+      - "Community Organizing"
+      - "Economic Justice"
+    people:
+      - "Robert Johnson"
+      - "Virginia Durr"
+      - "Rosa Parks"
+      - "Martin Luther King Jr."
+      - "E.D. Nixon"
+
+  - id: "5"
+    thumbnail: "/media/img/launch_video_thumbnail.png"
+    title: "Jazz Heritage and Community"
+    interviewees: 
+      - "Sarah Washington"
+      - "Duke Ellington Jr."
+    description: "Sarah and Duke Jr. reflect on growing up in jazz-rich neighborhoods and how music brought communities together during difficult times."
+    duration: "35:18"
+    locations:
+      - name: "Kansas City, Missouri"
+        coordinates: [39.0997, -94.5786]
+      - name: "New York, New York"
+        coordinates: [40.7128, -74.0060]
+    tags:
+      - "Jazz"
+      - "Music History"
+      - "Community"
+      - "Kansas City"
+      - "Harlem Renaissance"
+      - "Musicians"
+    topics:
+      - "Music Traditions"
+      - "Community"
+      - "Cultural Heritage"
+    people:
+      - "Sarah Washington"
+      - "Duke Ellington Jr."
+      - "Charlie Parker"
+      - "Count Basie"
+
+  - id: "6"
+    thumbnail: "/media/img/launch_video_thumbnail.png"
+    title: "Education and Desegregation"
+    interviewees: 
+      - "Michael Davis"
+    description: "Michael talks about being among the first Black students to integrate his high school in Little Rock and the courage it took to persevere."
+    duration: "41:07"
+    locations:
+      - name: "Little Rock, Arkansas"
+        coordinates: [34.7465, -92.2896]
+      - name: "Pine Bluff, Arkansas"
+        coordinates: [34.2284, -92.0032]
+    tags:
+      - "School Integration"
+      - "Education"
+      - "Little Rock Nine"
+      - "Courage"
+      - "Federal Intervention"
+      - "Arkansas"
+    topics:
+      - "Education"
+      - "Civil Rights Movement"
+      - "School Desegregation"
+    people:
+      - "Michael Davis"
+      - "Little Rock Nine"
+      - "Daisy Bates"
+      - "Ernest Green"
