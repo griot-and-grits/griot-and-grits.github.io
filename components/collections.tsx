@@ -12,18 +12,22 @@ import {
     Clock,
     User,
     Tag,
-    X
+    X,
+    Calendar
 } from 'lucide-react';
 import { 
     Video, 
     Location,
+    TagWithPopularity,
+    PersonWithPopularity,
+    FilterMetadata,
     getAllTags, 
-    getAllTopics, 
     getAllPeople, 
     getAllLocations, 
     filterVideos 
 } from '@/lib/video-metadata';
 import dynamic from 'next/dynamic';
+import VideoPlayer from './video-player';
 
 // Dynamically import the map component to avoid SSR issues
 const InteractiveMap = dynamic(() => import('./interactive-map'), {
@@ -37,25 +41,39 @@ const InteractiveMap = dynamic(() => import('./interactive-map'), {
 
 interface CollectionsProps {
     videos: Video[];
+    filters: FilterMetadata;
 }
 
-const Collections: React.FC<CollectionsProps> = ({ videos }) => {
+const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
     const [showMap, setShowMap] = useState(false);
     const [showChatbot, setShowChatbot] = useState(false);
     const [chatMessage, setChatMessage] = useState('');
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
-    const [filteredVideos, setFilteredVideos] = useState<Video[]>(videos);
+    const [filteredVideos, setFilteredVideos] = useState<Video[]>([]);
     const [expandedTags, setExpandedTags] = useState<{ [videoId: string]: boolean }>({});
+    const [showAllTags, setShowAllTags] = useState(false);
+    const [showAllPeople, setShowAllPeople] = useState(false);
+    const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
+    const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
 
-    const allTags = getAllTags(videos);
-    const allTopics = getAllTopics(videos);
-    const allPeople = getAllPeople(videos);
+    const allTags = getAllTags(videos, filters);
+    const allPeople = getAllPeople(videos, filters);
     const allLocations = getAllLocations(videos);
 
+    // Get top 10 most popular tags and people
+    const topTags = allTags.slice(0, 10);
+    const remainingTags = allTags.slice(10);
+    const topPeople = allPeople.slice(0, 10);
+    const remainingPeople = allPeople.slice(10);
+
     useEffect(() => {
-        setFilteredVideos(videos);
+        // Sort videos by creation date descending (newest first) on initial load
+        const sortedVideos = [...videos].sort((a, b) => 
+            new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
+        );
+        setFilteredVideos(sortedVideos);
     }, [videos]);
 
     const handleSearch = (query: string) => {
@@ -86,6 +104,21 @@ const Collections: React.FC<CollectionsProps> = ({ videos }) => {
             ...prev,
             [videoId]: !prev[videoId]
         }));
+    };
+
+    const handleVideoPlay = (video: Video) => {
+        // Only open video player if we have a valid video URL
+        if (video && video.videoUrl && video.videoUrl.trim() !== '') {
+            setSelectedVideo(video);
+            setIsVideoPlayerOpen(true);
+        } else {
+            console.error('Cannot play video: missing or invalid video URL', video);
+        }
+    };
+
+    const handleVideoPlayerClose = () => {
+        setIsVideoPlayerOpen(false);
+        setSelectedVideo(null);
     };
 
     return (
@@ -281,24 +314,71 @@ const Collections: React.FC<CollectionsProps> = ({ videos }) => {
                     className="mb-8 space-y-4"
                 >
                     {/* Filter Tags */}
-                    <div className="flex flex-wrap gap-2">
-                        <span className="text-sm text-muted-foreground flex items-center gap-2">
-                            <Filter className="w-4 h-4" />
-                            Filters:
-                        </span>
-                        {[...allTopics, ...allTags, ...allPeople].slice(0, 12).map(filter => (
-                            <button
-                                key={filter}
-                                onClick={() => handleFilterToggle(filter)}
-                                className={`px-3 py-1 rounded-full text-sm border transition-colors ${
-                                    selectedFilters.includes(filter)
-                                        ? 'bg-primary text-primary-foreground border-primary'
-                                        : 'bg-card text-foreground border-border hover:bg-accent'
-                                }`}
-                            >
-                                {filter}
-                            </button>
-                        ))}
+                    <div className="space-y-3">
+                        <div className="flex items-center gap-2">
+                            <Filter className="w-4 h-4 text-muted-foreground" />
+                            <span className="text-sm text-muted-foreground">Filters:</span>
+                        </div>
+                        
+                        {/* Tags */}
+                        <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                                <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Tags</h4>
+                                {remainingTags.length > 0 && (
+                                    <button
+                                        onClick={() => setShowAllTags(!showAllTags)}
+                                        className="text-xs text-primary hover:text-primary/80 underline"
+                                    >
+                                        {showAllTags ? 'Show less' : `+${remainingTags.length} more`}
+                                    </button>
+                                )}
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {(showAllTags ? allTags : topTags).map(tag => (
+                                    <button
+                                        key={tag.name}
+                                        onClick={() => handleFilterToggle(tag.name)}
+                                        className={`px-3 py-1 rounded-full text-sm border transition-colors ${
+                                            selectedFilters.includes(tag.name)
+                                                ? 'bg-primary text-primary-foreground border-primary'
+                                                : 'bg-card text-foreground border-border hover:bg-accent'
+                                        }`}
+                                    >
+                                        {tag.name}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* People */}
+                        <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                                <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">People</h4>
+                                {remainingPeople.length > 0 && (
+                                    <button
+                                        onClick={() => setShowAllPeople(!showAllPeople)}
+                                        className="text-xs text-primary hover:text-primary/80 underline"
+                                    >
+                                        {showAllPeople ? 'Show less' : `+${remainingPeople.length} more`}
+                                    </button>
+                                )}
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                                {(showAllPeople ? allPeople : topPeople).map(person => (
+                                    <button
+                                        key={person.name}
+                                        onClick={() => handleFilterToggle(person.name)}
+                                        className={`px-3 py-1 rounded-full text-sm border transition-colors ${
+                                            selectedFilters.includes(person.name)
+                                                ? 'bg-primary text-primary-foreground border-primary'
+                                                : 'bg-card text-foreground border-border hover:bg-accent'
+                                        }`}
+                                    >
+                                        {person.name}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
                     </div>
 
                     {/* Active Filters */}
@@ -352,7 +432,11 @@ const Collections: React.FC<CollectionsProps> = ({ videos }) => {
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                                    <button className="bg-white/90 rounded-full p-3 hover:bg-white transition-colors">
+                                    <button 
+                                        onClick={() => handleVideoPlay(video)}
+                                        className="bg-white/90 rounded-full p-3 hover:bg-white transition-colors"
+                                        aria-label={`Play ${video.title}`}
+                                    >
                                         <Play className="w-6 h-6 text-black ml-1" />
                                     </button>
                                 </div>
@@ -396,6 +480,15 @@ const Collections: React.FC<CollectionsProps> = ({ videos }) => {
                                     </div>
                                 </div>
 
+                                <div className="flex items-center text-sm text-muted-foreground mb-4">
+                                    <Calendar className="w-4 h-4 mr-2" />
+                                    {new Date(video.createdDate).toLocaleDateString('en-US', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
+                                    })}
+                                </div>
+
                                 {/* Tags */}
                                 <div className="relative flex flex-wrap gap-2 mb-4">
                                     {(expandedTags[video.id] ? video.tags : video.tags.slice(0, 3)).map(tag => (
@@ -420,7 +513,11 @@ const Collections: React.FC<CollectionsProps> = ({ videos }) => {
                                     )}
                                 </div>
 
-                                <button className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/80 transition-colors">
+                                <button 
+                                    onClick={() => handleVideoPlay(video)}
+                                    className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/80 transition-colors flex items-center justify-center gap-2"
+                                >
+                                    <Play className="w-4 h-4" />
                                     Watch Video
                                 </button>
                             </div>
@@ -457,7 +554,11 @@ const Collections: React.FC<CollectionsProps> = ({ videos }) => {
                                     setSearchQuery('');
                                     setSelectedFilters([]);
                                     setSelectedLocation(null);
-                                    setFilteredVideos(videos);
+                                    // Sort videos by creation date descending when clearing filters
+                                    const sortedVideos = [...videos].sort((a, b) => 
+                                        new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime()
+                                    );
+                                    setFilteredVideos(sortedVideos);
                                 }}
                                 className="ml-4 text-primary hover:text-primary/80 underline"
                             >
@@ -466,6 +567,14 @@ const Collections: React.FC<CollectionsProps> = ({ videos }) => {
                         )}
                     </p>
                 </motion.div>
+                
+                {/* Video Player Modal */}
+                <VideoPlayer
+                    isOpen={isVideoPlayerOpen}
+                    onClose={handleVideoPlayerClose}
+                    videoUrl={selectedVideo?.videoUrl || ''}
+                    title={selectedVideo?.title || ''}
+                />
             </div>
         </section>
     );

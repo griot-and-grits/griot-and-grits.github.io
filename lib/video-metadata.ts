@@ -3,6 +3,16 @@ export interface Location {
     coordinates: [number, number];
 }
 
+export interface TagWithPopularity {
+    name: string;
+    popularity: number;
+}
+
+export interface PersonWithPopularity {
+    name: string;
+    popularity: number;
+}
+
 export interface Video {
     id: string;
     thumbnail: string;
@@ -10,9 +20,10 @@ export interface Video {
     interviewees: string[];
     description: string;
     duration: string;
+    createdDate: string;
+    videoUrl: string;
     locations: Location[];
     tags: string[];
-    topics: string[];
     people: string[];
 }
 
@@ -20,16 +31,37 @@ export interface VideoMetadata {
     videos: Video[];
 }
 
-export function getAllTags(videos: Video[]): string[] {
-    return [...new Set(videos.flatMap(video => video.tags))];
+export interface FilterMetadata {
+    tags: TagWithPopularity[];
+    people: PersonWithPopularity[];
 }
 
-export function getAllTopics(videos: Video[]): string[] {
-    return [...new Set(videos.flatMap(video => video.topics))];
+export function getAllTags(videos: Video[], filters: FilterMetadata): TagWithPopularity[] {
+    const usedTags = new Set<string>();
+    
+    videos.forEach(video => {
+        video.tags.forEach(tag => {
+            usedTags.add(tag);
+        });
+    });
+    
+    return filters.tags
+        .filter(tag => usedTags.has(tag.name))
+        .sort((a, b) => b.popularity - a.popularity);
 }
 
-export function getAllPeople(videos: Video[]): string[] {
-    return [...new Set(videos.flatMap(video => video.people))];
+export function getAllPeople(videos: Video[], filters: FilterMetadata): PersonWithPopularity[] {
+    const usedPeople = new Set<string>();
+    
+    videos.forEach(video => {
+        video.people.forEach(person => {
+            usedPeople.add(person);
+        });
+    });
+    
+    return filters.people
+        .filter(person => usedPeople.has(person.name))
+        .sort((a, b) => b.popularity - a.popularity);
 }
 
 export function getAllLocations(videos: Video[]): string[] {
@@ -50,7 +82,6 @@ export function filterVideos(
             video.interviewees.some(interviewee => interviewee.toLowerCase().includes(searchQuery.toLowerCase())) ||
             video.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
             video.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
-            video.topics.some(topic => topic.toLowerCase().includes(searchQuery.toLowerCase())) ||
             video.people.some(person => person.toLowerCase().includes(searchQuery.toLowerCase()))
         );
     }
@@ -58,9 +89,8 @@ export function filterVideos(
     if (selectedFilters.length > 0) {
         filtered = filtered.filter(video =>
             selectedFilters.some(filter =>
-                video.tags.includes(filter) ||
-                video.topics.includes(filter) ||
-                video.people.includes(filter)
+                video.tags.some(tag => tag === filter) ||
+                video.people.some(person => person === filter)
             )
         );
     }
@@ -70,6 +100,9 @@ export function filterVideos(
             video.locations.some(loc => loc.name === selectedLocation)
         );
     }
+
+    // Always sort by creation date in descending order (newest first)
+    filtered.sort((a, b) => new Date(b.createdDate).getTime() - new Date(a.createdDate).getTime());
 
     return filtered;
 }
