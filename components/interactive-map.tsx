@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { LatLngExpression } from 'leaflet';
-import { Video, Location } from '@/lib/video-metadata';
+import { Video } from '@/lib/video-metadata';
 import 'leaflet/dist/leaflet.css';
 
 // Fix for default markers in React Leaflet
@@ -34,7 +34,8 @@ interface InteractiveMapProps {
 const InteractiveMap: React.FC<InteractiveMapProps> = ({ 
     videos, 
     onLocationClick, 
-    selectedLocation 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    selectedLocation // TODO: Use for highlighting selected location
 }) => {
     const [mapReady, setMapReady] = useState(false);
     const [mapError, setMapError] = useState<string | null>(null);

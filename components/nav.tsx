@@ -28,12 +28,12 @@ const Nav = () => {
     ];
 
     const navLinks = [
-        { label: 'Home', href: '#home' },
-        { label: 'Our Purpose', href: '#about' },
-        { label: 'Work of the Project', href: '#services' },
-        { label: 'Works', href: '#works' },
+        { label: 'Home', href: '/#home' },
         { label: 'Our Collection', href: '/collection' },
-        { label: 'Contributing', href: '#contact' }
+        { label: 'Our Purpose', href: '/#about' },
+        { label: 'Work of the Project', href: '/#services' },
+        { label: 'Featured Stories', href: '/#works' },
+        { label: 'Contributing', href: '/#contact' }
     ];
 
     const containerVariants = {
@@ -85,7 +85,7 @@ const Nav = () => {
             transition={{ duration: 0.5 }}
             className="absolute left-10 top-1/2 -translate-y-1/2 z-60"
         >
-            <Link href="#home" className="block">
+            <Link href="/#home" className="block">
                 <Image 
                     src="./icon.png" 
                     alt="Griot and Grits Logo" 

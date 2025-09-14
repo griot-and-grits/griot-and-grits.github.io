@@ -46,7 +46,7 @@ export const faqItems = [
     {
         question: "Who is involved in Griot and Grits?",
         answer:
-        `Griot and Grits is a collaboration between Red Hat's Black United in Leadership and Diversity (B.U.I.L.D.) organization, historians, and leaders in the African American community. Key advisors include Carmen Cauthen, a historian and author of "Historic Black Neighborhoods of Raleigh." The project also partners with students from Shaw University.`,
+        `Griot and Grits is a collaboration between Red Hat's Black United in Leadership and Diversity (B.U.I.L.D.) organization, historians, leaders in the African American community, universities and the Mass Open Cloud.`,
     },
     {
         question: "What are the goals of the project?",
@@ -67,11 +67,6 @@ export const faqItems = [
         question: "When will the stories be available?",
         answer:
         `The community is dedicated to making the stories captured publicly accessible in the upcoming months. Stay tuned for updates on our https://www.griotandgrits.org/ and https://github.com/griot-and-grits/griot-and-grits repository.`,
-    },
-    {
-        question: "How does Griot and Grits support education?",
-        answer:
-        "The project currently partners with Shaw University students, fostering an environment of learning and collaboration. Students are provided with the skills and knowledge needed to create and share their stories, contributing to the preservation of Black history.  If interested in becoming a partner, email us at outreach@griotandgrits.org.",
     },
     {
         question: "Who can I contact for more information?",

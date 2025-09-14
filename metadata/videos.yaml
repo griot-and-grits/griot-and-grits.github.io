@@ -185,7 +185,7 @@ videos:
     interviewees: 
       - "Irene Clark"
     description: "Irene Clark examines the historical use of black prisoners' cadavers in medical schools without family consent. This legal practice primarily benefited white institutions while restricting white cadavers from black schools."
-    duration: "12:45"
+    duration: "3:00"
     createdDate: "2023-08-25T13:10:00Z"
     videoUrl: "https://www.youtube.com/watch?v=mE1PTJeDBXI"
     locations:
@@ -206,7 +206,7 @@ videos:
     interviewees: 
       - "Gladys M. Williams"
     description: "Gladys Williams shares her journey from her early years in Washington, North Carolina, to her experiences in Brooklyn and beyond. She reflects on her dedication to work, education, and personal values, emphasizing resilience and integrity."
-    duration: "28:33"
+    duration: "12:56"
     createdDate: "2023-09-14T10:25:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Bwk5yovVvmM"
     locations:
@@ -233,7 +233,7 @@ videos:
     interviewees: 
       - "Deborah Ragan McCoy"
     description: "Deborah McCoy reflects on her life, starting with her birth in Philadelphia, Pennsylvania in 1949. She explains how she got her name and shares various names she has been called, including Debbie and Elder Deb."
-    duration: "15:22"
+    duration: "3:27"
     createdDate: "2023-10-03T16:30:00Z"
     videoUrl: "https://www.youtube.com/watch?v=9Nwl-6DRPYI"
     locations:
@@ -257,7 +257,7 @@ videos:
     interviewees: 
       - "Sharon McDuffie"
     description: "On the morning of September 11, 2001, she awoke in Raleigh, North Carolina, to the shocking news of a plane crashing into the World Trade Center. As a second plane struck, confirming the attack, a sense of urgency and fear set in."
-    duration: "18:45"
+    duration: "9:36"
     createdDate: "2023-11-17T08:45:00Z"
     videoUrl: "https://www.youtube.com/watch?v=meR02ie2lYg"
     locations:
@@ -283,7 +283,7 @@ videos:
     interviewees: 
       - "Ty McDuffie"
     description: "Ty McDuffie, founder of Griot and Grits, shares his personal story about meeting his wife, Sharon Burwell McDuffie, just before Air Force basic training at a MEPS station. They were assigned different flights but managed to connect by passing notes."
-    duration: "22:15"
+    duration: "3:16"
     createdDate: "2023-12-08T14:20:00Z"
     videoUrl: "https://www.youtube.com/watch?v=1veIaRHpYO0"
     locations:
@@ -309,7 +309,7 @@ videos:
     interviewees: 
       - "Deborah Ragan McCoy"
     description: "At just 10 years old, Deborah Ragan McCoy found herself babysitting her aunt's six children in West Philadelphia—a responsibility far beyond her years. As the evening wore on, an approaching snowstorm made her eager to get home. Determined, she braved the bitter cold and deepening snow, embarking on an arduous four-hour trek."
-    duration: "16:30"
+    duration: "5:14"
     createdDate: "2024-01-12T12:15:00Z"
     videoUrl: "https://www.youtube.com/watch?v=Wygd0hwc7iA"
     locations:
@@ -326,69 +326,3 @@ videos:
       - "Weather Events"
     people:
       - "Deborah Ragan McCoy"
-
-  - id: "13"
-    thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739667110/Screenshot_60_hitkvb.png"
-    title: "McCoy Family Concept Video"
-    interviewees: 
-      - "McCoy Family"
-    description: "See a concept video of how AI will enhance the stories of the McCoy Family."
-    duration: "8:20"
-    createdDate: "2024-02-20T09:00:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=i7KdDb4nv7U"
-    locations:
-      - name: "United States"
-        coordinates: [39.8283, -98.5795]
-    tags:
-      - "AI Enhancement"
-      - "Technology"
-      - "Family Stories"
-      - "Concept Video"
-      - "Innovation"
-    people:
-      - "McCoy Family"
-
-  - id: "14"
-    thumbnail: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470989/image_vfqft9.png"
-    title: "Gladys M. Williams Concept Video"
-    interviewees: 
-      - "Gladys M. Williams"
-    description: "See a concept video of how AI will enhance the stories of Gladys M. Williams."
-    duration: "7:45"
-    createdDate: "2024-03-05T11:30:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=f3NWsd0yddk"
-    locations:
-      - name: "Washington, North Carolina"
-        coordinates: [35.5468, -77.0522]
-      - name: "Brooklyn, New York"
-        coordinates: [40.6782, -73.9442]
-    tags:
-      - "AI Enhancement"
-      - "Technology"
-      - "Personal Stories"
-      - "Concept Video"
-      - "Innovation"
-    people:
-      - "Gladys M. Williams"
-
-  - id: "15"
-    thumbnail: "/media/img/launch_video_thumbnail.png"
-    title: "Griot and Grits - How it Works"
-    interviewees: 
-      - "Griot and Grits Team"
-    description: "Watch how the Griot and Grits community brings the stories of black families to life."
-    duration: "5:30"
-    createdDate: "2024-04-18T15:45:00Z"
-    videoUrl: "https://www.youtube.com/watch?v=sO3GO_ghEXk"
-    locations:
-      - name: "United States"
-        coordinates: [39.8283, -98.5795]
-    tags:
-      - "Platform Overview"
-      - "Community"
-      - "How It Works"
-      - "Family Stories"
-      - "Technology"
-      - "Community Building"
-    people:
-      - "Griot and Grits Team"

@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { motion, useAnimation, Variants } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import {
@@ -12,6 +12,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { Play } from "lucide-react"
+import VideoPlayer from './video-player'
 
 interface Service {
   icon: string
@@ -109,12 +112,21 @@ const Services: React.FC = () => {
         triggerOnce: true,
         threshold: 0.1,
     })
+    const [isVideoPlayerOpen, setIsVideoPlayerOpen] = useState(false);
 
     useEffect(() => {
         if (inView) {
             controls.start("visible")
         }
     }, [controls, inView])
+
+    const handleVideoPlay = () => {
+        setIsVideoPlayerOpen(true);
+    };
+
+    const handleVideoPlayerClose = () => {
+        setIsVideoPlayerOpen(false);
+    };
 
     const containerVariants: Variants = {
         hidden: { opacity: 0 },
@@ -141,22 +153,55 @@ const Services: React.FC = () => {
     return (
         <section id="services" className="py-20 w-full bg-gradient-to-br from-gray-100 to bg-orange-50 overflow-hidden">
             <div className="container max-w-7xl mx-auto px-4">
-                <motion.h2
-                    initial={{ opacity: 0, y: -50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-[#a94728] text-sm uppercase max-w-4xl mx-auto tracking-widest font-bold text-center mb-4"
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="mb-16 text-center"
                 >
-                    / Work Of The Project
-                </motion.h2>
-                <motion.h2
-                    initial={{ opacity: 0, y: -50 }}
+                    <h3 className="text-[#a94728] tracking-widest font-semibold text-lg mt-6 mb-4 uppercase">/ Work Of The Project</h3>
+                    <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
+                        Bringing the Black experience to life for generations to come
+                    </p>
+                </motion.div>
+                
+                {/* Featured How It Works Video */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="text-lg font-bold text-neutral-500 max-w-4xl mx-auto text-center mb-4"
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="max-w-2xl mx-auto mb-16"
                 >
-                    Bringing the Black experience to life for our generation and generations to come through:
-                </motion.h2>
+                    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+                        <div className="relative aspect-video bg-gray-900 group">
+                            <Image
+                                src="/media/img/launch_video_thumbnail.png"
+                                alt="Griot and Grits - How it Works"
+                                fill
+                                className="object-cover"
+                            />
+                            <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <button
+                                    onClick={handleVideoPlay}
+                                    className="bg-white/90 rounded-full p-6 hover:bg-white transition-colors transform hover:scale-110 duration-300"
+                                    aria-label="Play How it Works video"
+                                >
+                                    <Play className="w-8 h-8 text-[#a94728] ml-1" />
+                                </button>
+                            </div>
+                            <div className="absolute bottom-4 left-4 bg-[#a94728] text-white px-3 py-1 rounded-full text-sm font-medium">
+                                Platform Overview
+                            </div>
+                        </div>
+                        <div className="p-6">
+                            <h3 className="text-2xl font-bold text-gray-900 mb-3">Griot and Grits - How it Works</h3>
+                            <p className="text-gray-600 text-lg leading-relaxed">
+                                Watch how the Griot and Grits community brings the stories of black families to life using AI and advanced technologies to preserve oral history.
+                            </p>
+                        </div>
+                    </div>
+                </motion.div>
+                
                 <motion.div
                     ref={ref}
                     variants={containerVariants}
@@ -168,6 +213,14 @@ const Services: React.FC = () => {
                         <ServiceCard key={index} service={service} variants={itemVariants} />
                     ))}
                 </motion.div>
+                
+                {/* Video Player Modal */}
+                <VideoPlayer
+                    isOpen={isVideoPlayerOpen}
+                    onClose={handleVideoPlayerClose}
+                    videoUrl="https://www.youtube.com/watch?v=sO3GO_ghEXk"
+                    title="Griot and Grits - How it Works"
+                />
             </div>
         </section>
     )

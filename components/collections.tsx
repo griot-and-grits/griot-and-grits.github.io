@@ -17,13 +17,9 @@ import {
 } from 'lucide-react';
 import { 
     Video, 
-    Location,
-    TagWithPopularity,
-    PersonWithPopularity,
     FilterMetadata,
     getAllTags, 
     getAllPeople, 
-    getAllLocations, 
     filterVideos 
 } from '@/lib/video-metadata';
 import dynamic from 'next/dynamic';
@@ -53,6 +49,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
     const [filteredVideos, setFilteredVideos] = useState<Video[]>([]);
     const [expandedTags, setExpandedTags] = useState<{ [videoId: string]: boolean }>({});
+    const [expandedDescriptions, setExpandedDescriptions] = useState<{ [videoId: string]: boolean }>({});
     const [showAllTags, setShowAllTags] = useState(false);
     const [showAllPeople, setShowAllPeople] = useState(false);
     const [selectedVideo, setSelectedVideo] = useState<Video | null>(null);
@@ -60,7 +57,6 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
 
     const allTags = getAllTags(videos, filters);
     const allPeople = getAllPeople(videos, filters);
-    const allLocations = getAllLocations(videos);
 
     // Get top 10 most popular tags and people
     const topTags = allTags.slice(0, 10);
@@ -101,6 +97,13 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
 
     const toggleTagExpansion = (videoId: string) => {
         setExpandedTags(prev => ({
+            ...prev,
+            [videoId]: !prev[videoId]
+        }));
+    };
+
+    const toggleDescriptionExpansion = (videoId: string) => {
+        setExpandedDescriptions(prev => ({
             ...prev,
             [videoId]: !prev[videoId]
         }));
@@ -244,30 +247,30 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                                 <div className="bg-muted rounded-lg p-4">
                                     <div className="text-foreground text-sm">
                                         <p className="mb-2">
-                                            <em>"Greetings, friend. I am the keeper of these stories, the voices that echo through time. 
-                                            I've spent countless hours listening, learning, and cataloging the experiences that shape our communities."</em>
+                                            <em>&ldquo;Greetings, friend. I am the keeper of these stories, the voices that echo through time. 
+                                            I&rsquo;ve spent countless hours listening, learning, and cataloging the experiences that shape our communities.&rdquo;</em>
                                         </p>
                                         <p className="text-muted-foreground text-xs mb-3">
-                                            Tell me what stories you seek, and I'll guide you to the voices that speak to your heart and mind.
+                                            Tell me what stories you seek, and I&rsquo;ll guide you to the voices that speak to your heart and mind.
                                         </p>
                                         <div className="flex flex-wrap gap-2 text-xs">
                                             <button 
                                                 onClick={() => setChatMessage("Tell me about stories of resilience during difficult times")}
                                                 className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
                                             >
-                                                "Stories of resilience"
+                                                &ldquo;Stories of resilience&rdquo;
                                             </button>
                                             <button 
                                                 onClick={() => setChatMessage("Show me videos about family traditions and cultural heritage")}
                                                 className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
                                             >
-                                                "Cultural heritage"
+                                                &ldquo;Cultural heritage&rdquo;
                                             </button>
                                             <button 
                                                 onClick={() => setChatMessage("Find stories about community leaders and changemakers")}
                                                 className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
                                             >
-                                                "Community leaders"
+                                                &ldquo;Community leaders&rdquo;
                                             </button>
                                         </div>
                                     </div>
@@ -291,7 +294,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                                             <span className="text-lg">🪘</span>
                                             <div>
                                                 <p className="text-foreground mb-2">
-                                                    <em>"I understand you're looking for: '{chatMessage}'"</em>
+                                                    <em>&ldquo;I understand you&rsquo;re looking for: &lsquo;{chatMessage}&rsquo;&rdquo;</em>
                                                 </p>
                                                 <p className="text-muted-foreground text-xs">
                                                     The Griot is analyzing our collection to find the most relevant stories... 
@@ -464,9 +467,19 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                                     </div>
                                 </div>
 
-                                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                                    {video.description}
-                                </p>
+                                <div className="text-muted-foreground text-sm mb-4">
+                                    <p className={expandedDescriptions[video.id] ? '' : 'line-clamp-3'}>
+                                        {video.description}
+                                    </p>
+                                    {video.description.length > 150 && (
+                                        <button
+                                            onClick={() => toggleDescriptionExpansion(video.id)}
+                                            className="text-xs text-primary hover:text-primary/80 underline mt-1 cursor-pointer"
+                                        >
+                                            {expandedDescriptions[video.id] ? 'Show less' : 'Read more'}
+                                        </button>
+                                    )}
+                                </div>
 
                                 <div className="flex items-center text-sm text-muted-foreground mb-4">
                                     <MapPin className="w-4 h-4 mr-2" />
@@ -515,7 +528,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
 
                                 <button 
                                     onClick={() => handleVideoPlay(video)}
-                                    className="w-full bg-primary text-primary-foreground py-2 rounded-lg hover:bg-primary/80 transition-colors flex items-center justify-center gap-2"
+                                    className="w-full bg-[#a94728] text-white py-2 rounded-lg hover:bg-[#8b3a1f] transition-colors flex items-center justify-center gap-2"
                                 >
                                     <Play className="w-4 h-4" />
                                     Watch Video
