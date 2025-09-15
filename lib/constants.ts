@@ -111,7 +111,7 @@ export const testimonials: Testimonial[] = [
 {
     id: 4,
     content:
-    "This project is an opportunity to honor the contributions, resilience, and brilliance of those who came before us while also creating something that will educate and inspire future generations. Personally, Black history is a vital part of my identity and legacy, and professionally, it aligns with my passion for storytelling, empowerment, and ensuring that important narratives are preserved and shared.  I’m grateful to contribute to this project and to collaborate with others who are equally passionate about making an impact on preserving our history. We are our ancestors' wildest dreams.",
+    "This project is an opportunity to honor the contributions, resilience, and brilliance of those who came before us while also creating something that will educate and inspire future generations. Personally, Black history is a vital part of my identity and legacy, and professionally, it aligns with my passion for storytelling, empowerment, and ensuring that important narratives are preserved and shared.  I'm grateful to contribute to this project and to collaborate with others who are equally passionate about making an impact on preserving our history. We are our ancestors' wildest dreams.",
     author: "Koren Townsend",
     position: "Sr. Project Manager",
     avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470056/image_fygbiz.png",
@@ -119,7 +119,7 @@ export const testimonials: Testimonial[] = [
 {
     id: 5,
     content:
-    "An increasing challenge that black families face is the further we are from the struggles of our ancestors, the harder it is to acknowledge that the struggle ever existed.  Using AI to blend rich historical archives together with oral history will bring new life to these amazing stories.  It’s important we teach future generations about these struggles in ways that are relatable, educational and heart-felt.",
+    "An increasing challenge that black families face is the further we are from the struggles of our ancestors, the harder it is to acknowledge that the struggle ever existed.  Using AI to blend rich historical archives together with oral history will bring new life to these amazing stories.  It's important we teach future generations about these struggles in ways that are relatable, educational and heart-felt.",
     author: "Ty McDuffie",
     position: "Founder",
     avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739470053/unnamed_zovuhs.png",
@@ -127,7 +127,7 @@ export const testimonials: Testimonial[] = [
 {
     id: 6,
     content:
-    "Through Griot and Grits, we are taking a significant step towards ensuring that the voices and stories of the Black community are preserved.  We have an aging generation that lived through segregation, fought for equal rights, and witnessed a man step foot on the moon.  It’s critically important that families capture those stories before they are lost forever, and AI is helping us do just that for them.",
+    "Through Griot and Grits, we are taking a significant step towards ensuring that the voices and stories of the Black community are preserved.  We have an aging generation that lived through segregation, fought for equal rights, and witnessed a man step foot on the moon.  It's critically important that families capture those stories before they are lost forever, and AI is helping us do just that for them.",
     author: "Sherard Griffin",
     position: "Senior Director, OpenShift AI Engineering",
     avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739473412/Picture1_w1clj2.png",
@@ -143,9 +143,41 @@ export const testimonials: Testimonial[] = [
 {
     id: 8,
     content:
-    " The idea of bringing my family’s past to life via the Griot and Grits project is incredible—one that ensures future generations will know their roots. AI doesn’t replace storytelling; it enhances it, making history more vivid, accessible, and meaningful than ever before.",
+    " The idea of bringing my family's past to life via the Griot and Grits project is incredible—one that ensures future generations will know their roots. AI doesn't replace storytelling; it enhances it, making history more vivid, accessible, and meaningful than ever before.",
     author: "Sonja Matheny",
     position: "Sr Program Manager",
     avatarUrl: "https://res.cloudinary.com/ducxigdil/image/upload/v1739711234/unnamed_3_f48v7o.png",
 },
 ]
+
+export type LLMProvider = 'ollama' | 'vllm' | 'llamacpp' | 'openshift-ai';
+
+export interface GriotConfig {
+    llm: {
+        provider: LLMProvider;
+        baseUrl: string;
+        model: string;
+        timeout: number;
+        apiKey?: string;
+        headers?: Record<string, string>;
+    };
+    context: {
+        filePath: string;
+        maxTokens: number;
+    };
+}
+
+export const griotConfig: GriotConfig = {
+    llm: {
+        provider: (process.env.NEXT_PUBLIC_LLM_PROVIDER as LLMProvider) || 'ollama',
+        baseUrl: process.env.NEXT_PUBLIC_LLM_BASE_URL || 'http://localhost:11434',
+        model: process.env.NEXT_PUBLIC_LLM_MODEL || 'llama3.2:1b',
+        timeout: parseInt(process.env.NEXT_PUBLIC_LLM_TIMEOUT || '120000'),
+        apiKey: process.env.NEXT_PUBLIC_LLM_API_KEY,
+        headers: process.env.NEXT_PUBLIC_LLM_HEADERS ? JSON.parse(process.env.NEXT_PUBLIC_LLM_HEADERS) : undefined,
+    },
+    context: {
+        filePath: '/griot-context.txt',
+        maxTokens: parseInt(process.env.NEXT_PUBLIC_CONTEXT_MAX_TOKENS || '4000'),
+    },
+}

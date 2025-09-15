@@ -13,7 +13,9 @@ import {
     User,
     Tag,
     X,
-    Calendar
+    Calendar,
+    Send,
+    Loader2
 } from 'lucide-react';
 import { 
     Video, 
@@ -22,6 +24,7 @@ import {
     getAllPeople, 
     filterVideos 
 } from '@/lib/video-metadata';
+import { griotLLM, ChatMessage } from '@/lib/griot-llm';
 import dynamic from 'next/dynamic';
 import VideoPlayer from './video-player';
 
@@ -46,6 +49,8 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
     const [showMap, setShowMap] = useState(false);
     const [showChatbot, setShowChatbot] = useState(false);
     const [chatMessage, setChatMessage] = useState('');
+    const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
     const [filteredVideos, setFilteredVideos] = useState<Video[]>([]);
     const [expandedTags, setExpandedTags] = useState<{ [videoId: string]: boolean }>({});
@@ -122,6 +127,49 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
     const handleVideoPlayerClose = () => {
         setIsVideoPlayerOpen(false);
         setSelectedVideo(null);
+    };
+
+    const handleSendMessage = async () => {
+        if (!chatMessage.trim() || isLoading) return;
+
+        const userMessage: ChatMessage = {
+            role: 'user',
+            content: chatMessage.trim()
+        };
+
+        setChatHistory(prev => [...prev, userMessage]);
+        setChatMessage('');
+        setIsLoading(true);
+
+        try {
+            const context = await griotLLM.loadContext();
+            const systemMessage = griotLLM.createSystemMessage(context, userMessage.content);
+            
+            const response = await griotLLM.chat([systemMessage, userMessage]);
+            
+            const assistantMessage: ChatMessage = {
+                role: 'assistant',
+                content: response.content
+            };
+
+            setChatHistory(prev => [...prev, assistantMessage]);
+        } catch (error) {
+            console.error('Chat error:', error);
+            const errorMessage: ChatMessage = {
+                role: 'assistant',
+                content: "I apologize, but I'm having trouble connecting to the knowledge base right now. Please try again in a moment."
+            };
+            setChatHistory(prev => [...prev, errorMessage]);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSendMessage();
+        }
     };
 
     return (
@@ -243,67 +291,110 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                                     <p className="text-sm text-muted-foreground">Your guide to our oral history collection</p>
                                 </div>
                             </div>
-                            <div className="space-y-4">
-                                <div className="bg-muted rounded-lg p-4">
-                                    <div className="text-foreground text-sm">
-                                        <p className="mb-2">
-                                            <em>&ldquo;Greetings, friend. I am the keeper of these stories, the voices that echo through time. 
-                                            I&rsquo;ve spent countless hours listening, learning, and cataloging the experiences that shape our communities.&rdquo;</em>
-                                        </p>
-                                        <p className="text-muted-foreground text-xs mb-3">
-                                            Tell me what stories you seek, and I&rsquo;ll guide you to the voices that speak to your heart and mind.
-                                        </p>
-                                        <div className="flex flex-wrap gap-2 text-xs">
-                                            <button 
-                                                onClick={() => setChatMessage("Tell me about stories of resilience during difficult times")}
-                                                className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
-                                            >
-                                                &ldquo;Stories of resilience&rdquo;
-                                            </button>
-                                            <button 
-                                                onClick={() => setChatMessage("Show me videos about family traditions and cultural heritage")}
-                                                className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
-                                            >
-                                                &ldquo;Cultural heritage&rdquo;
-                                            </button>
-                                            <button 
-                                                onClick={() => setChatMessage("Find stories about community leaders and changemakers")}
-                                                className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
-                                            >
-                                                &ldquo;Community leaders&rdquo;
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex gap-2">
-                                    <input
-                                        type="text"
-                                        placeholder="Tell the Griot what stories you're seeking..."
-                                        value={chatMessage}
-                                        onChange={(e) => setChatMessage(e.target.value)}
-                                        className="flex-1 px-3 py-2 border border-border rounded-lg bg-background text-foreground"
-                                    />
-                                    <button className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/80 flex items-center gap-2">
-                                        <MessageSquare className="w-4 h-4" />
-                                        Ask
-                                    </button>
-                                </div>
-                                {chatMessage && (
-                                    <div className="bg-primary/10 border border-primary/20 rounded-lg p-3 text-sm">
-                                        <div className="flex items-start gap-2">
-                                            <span className="text-lg">🪘</span>
-                                            <div>
-                                                <p className="text-foreground mb-2">
-                                                    <em>&ldquo;I understand you&rsquo;re looking for: &lsquo;{chatMessage}&rsquo;&rdquo;</em>
-                                                </p>
-                                                <p className="text-muted-foreground text-xs">
-                                                    The Griot is analyzing our collection to find the most relevant stories... 
-                                                    In a full implementation, this would use AI to search and filter the videos based on your request.
-                                                </p>
+                            
+                            {/* Chat History */}
+                            <div className="space-y-4 mb-4">
+                                {chatHistory.length === 0 && (
+                                    <div className="bg-muted rounded-lg p-4">
+                                        <div className="text-foreground text-sm">
+                                            <p className="mb-2">
+                                                <em>&ldquo;Greetings, friend. I am the keeper of these stories, the voices that echo through time. 
+                                                I&rsquo;ve spent countless hours listening, learning, and cataloging the experiences that shape our communities.&rdquo;</em>
+                                            </p>
+                                            <p className="text-muted-foreground text-xs mb-3">
+                                                Tell me what stories you seek, and I&rsquo;ll guide you to the voices that speak to your heart and mind.
+                                            </p>
+                                            <div className="flex flex-wrap gap-2 text-xs">
+                                                <button 
+                                                    onClick={() => setChatMessage("Tell me about stories of resilience during difficult times")}
+                                                    className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
+                                                >
+                                                    &ldquo;Stories of resilience&rdquo;
+                                                </button>
+                                                <button 
+                                                    onClick={() => setChatMessage("Show me videos about family traditions and cultural heritage")}
+                                                    className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
+                                                >
+                                                    &ldquo;Cultural heritage&rdquo;
+                                                </button>
+                                                <button 
+                                                    onClick={() => setChatMessage("Find stories about community leaders and changemakers")}
+                                                    className="bg-secondary text-secondary-foreground px-2 py-1 rounded hover:bg-secondary/80"
+                                                >
+                                                    &ldquo;Community leaders&rdquo;
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 )}
+                                
+                                {/* Chat Messages */}
+                                <div className="max-h-96 overflow-y-auto space-y-3">
+                                    {chatHistory.map((message, index) => (
+                                        <div 
+                                            key={index}
+                                            className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                                        >
+                                            {message.role === 'assistant' && (
+                                                <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                                    <span className="text-primary-foreground text-sm">🪘</span>
+                                                </div>
+                                            )}
+                                            <div 
+                                                className={`max-w-[80%] p-3 rounded-lg text-sm ${
+                                                    message.role === 'user' 
+                                                        ? 'bg-primary text-primary-foreground' 
+                                                        : 'bg-muted text-foreground'
+                                                }`}
+                                            >
+                                                {message.content}
+                                            </div>
+                                            {message.role === 'user' && (
+                                                <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                                                    <User className="w-4 h-4 text-secondary-foreground" />
+                                                </div>
+                                            )}
+                                        </div>
+                                    ))}
+                                    
+                                    {/* Loading indicator */}
+                                    {isLoading && (
+                                        <div className="flex gap-3 justify-start">
+                                            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                                <span className="text-primary-foreground text-sm">🪘</span>
+                                            </div>
+                                            <div className="bg-muted text-foreground p-3 rounded-lg text-sm flex items-center gap-2">
+                                                <Loader2 className="w-4 h-4 animate-spin" />
+                                                The Griot is thinking...
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                            
+                            {/* Input Area */}
+                            <div className="flex gap-2">
+                                <input
+                                    type="text"
+                                    placeholder="Tell the Griot what stories you're seeking..."
+                                    value={chatMessage}
+                                    onChange={(e) => setChatMessage(e.target.value)}
+                                    onKeyPress={handleKeyPress}
+                                    disabled={isLoading}
+                                    className="flex-1 px-3 py-2 border border-border rounded-lg bg-background text-foreground disabled:opacity-50"
+                                />
+                                <button 
+                                    onClick={handleSendMessage}
+                                    disabled={!chatMessage.trim() || isLoading}
+                                    className="px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/80 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isLoading ? (
+                                        <Loader2 className="w-4 h-4 animate-spin" />
+                                    ) : (
+                                        <Send className="w-4 h-4" />
+                                    )}
+                                    Ask
+                                </button>
                             </div>
                         </motion.div>
                     )}
