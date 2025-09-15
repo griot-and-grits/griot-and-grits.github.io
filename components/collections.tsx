@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { 
@@ -51,6 +51,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
     const [chatMessage, setChatMessage] = useState('');
     const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const chatMessagesRef = useRef<HTMLDivElement>(null);
     const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
     const [filteredVideos, setFilteredVideos] = useState<Video[]>([]);
     const [expandedTags, setExpandedTags] = useState<{ [videoId: string]: boolean }>({});
@@ -141,26 +142,64 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
         setChatMessage('');
         setIsLoading(true);
 
+        // Add placeholder assistant message for streaming updates
+        const assistantMessageIndex = chatHistory.length + 1;
+        setChatHistory(prev => [...prev, {
+            role: 'assistant',
+            content: ''
+        }]);
+
         try {
             const context = await griotLLM.loadContext();
             const systemMessage = griotLLM.createSystemMessage(context, userMessage.content);
             
-            const response = await griotLLM.chat([systemMessage, userMessage]);
-            
-            const assistantMessage: ChatMessage = {
-                role: 'assistant',
-                content: response.content
-            };
+            await griotLLM.chatStream([systemMessage, userMessage], (chunk) => {
+                if (chunk.error) {
+                    console.error('Stream error:', chunk.error);
+                    setChatHistory(prev => {
+                        const updated = [...prev];
+                        updated[assistantMessageIndex] = {
+                            role: 'assistant',
+                            content: "I apologize, but I'm having trouble connecting to the knowledge base right now. Please try again in a moment."
+                        };
+                        return updated;
+                    });
+                    setIsLoading(false);
+                    return;
+                }
 
-            setChatHistory(prev => [...prev, assistantMessage]);
+                if (chunk.done) {
+                    setIsLoading(false);
+                    return;
+                }
+
+                // Update the assistant message with new content
+                setChatHistory(prev => {
+                    const updated = [...prev];
+                    updated[assistantMessageIndex] = {
+                        role: 'assistant',
+                        content: updated[assistantMessageIndex].content + chunk.content
+                    };
+                    return updated;
+                });
+
+                // Auto-scroll to bottom to follow the streaming text
+                setTimeout(() => {
+                    if (chatMessagesRef.current) {
+                        chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+                    }
+                }, 0);
+            });
         } catch (error) {
             console.error('Chat error:', error);
-            const errorMessage: ChatMessage = {
-                role: 'assistant',
-                content: "I apologize, but I'm having trouble connecting to the knowledge base right now. Please try again in a moment."
-            };
-            setChatHistory(prev => [...prev, errorMessage]);
-        } finally {
+            setChatHistory(prev => {
+                const updated = [...prev];
+                updated[assistantMessageIndex] = {
+                    role: 'assistant',
+                    content: "I apologize, but I'm having trouble connecting to the knowledge base right now. Please try again in a moment."
+                };
+                return updated;
+            });
             setIsLoading(false);
         }
     };
@@ -329,7 +368,7 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                                 )}
                                 
                                 {/* Chat Messages */}
-                                <div className="max-h-96 overflow-y-auto space-y-3">
+                                <div ref={chatMessagesRef} className="max-h-96 overflow-y-auto space-y-3">
                                     {chatHistory.map((message, index) => (
                                         <div 
                                             key={index}
@@ -348,6 +387,16 @@ const Collections: React.FC<CollectionsProps> = ({ videos, filters }) => {
                                                 }`}
                                             >
                                                 {message.content}
+                                                {/* Show typing indicator for empty assistant messages when loading */}
+                                                {message.role === 'assistant' && !message.content && isLoading && (
+                                                    <div className="flex items-center gap-1 text-muted-foreground">
+                                                        <div className="flex space-x-1">
+                                                            <div className="w-2 h-2 bg-current rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                                                            <div className="w-2 h-2 bg-current rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                                                            <div className="w-2 h-2 bg-current rounded-full animate-bounce"></div>
+                                                        </div>
+                                                    </div>
+                                                )}
                                             </div>
                                             {message.role === 'user' && (
                                                 <div className="w-8 h-8 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
