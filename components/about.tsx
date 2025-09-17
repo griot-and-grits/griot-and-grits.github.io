@@ -7,6 +7,8 @@ import 'swiper/css';
 import 'swiper/css/effect-cards';
 import { EffectCards, Autoplay } from 'swiper/modules';
 import Image from 'next/image';
+import Link from 'next/link';
+import { Play, ArrowRight } from 'lucide-react';
 
 const About = () => {
     const processItems = [
@@ -35,6 +37,31 @@ const About = () => {
     return (
         <section id="about" className="py-20">
         <div className="max-w-7xl mx-auto px-6">
+            {/* Call to Action for Collections */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="mb-16 text-center"
+            >
+                <div className="bg-gradient-to-r from-[#a94728] to-[#8b3a1f] rounded-xl p-8 text-white text-center shadow-xl">
+                    <div className="flex items-center justify-center mb-4">
+                        <Play className="w-8 h-8 mr-3" />
+                        <h4 className="text-2xl font-bold">Explore Our Oral History Collection</h4>
+                    </div>
+                    <p className="text-lg mb-6 opacity-90 max-w-2xl mx-auto">
+                        Discover powerful stories, voices, and experiences from our community. 
+                        Browse, filter, and watch our growing archive of oral history videos.
+                    </p>
+                    <Link href="/collection">
+                        <button className="bg-white text-[#a94728] font-semibold px-8 py-4 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 flex items-center gap-3 mx-auto text-lg shadow-lg">
+                            View Our Collection
+                            <ArrowRight className="w-5 h-5" />
+                        </button>
+                    </Link>
+                </div>
+            </motion.div>
+            
             {/* Header */}
             <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -42,7 +69,7 @@ const About = () => {
             viewport={{ once: true }}
             className="mb-16 text-center"
             >
-            <h3 className="text-[#a94728] tracking-widest font-semibold text-sm mt-6 mb-4 uppercase">/ Our Purpose</h3>            
+            <h3 className="text-[#a94728] tracking-widest font-semibold text-lg mt-6 mb-4 uppercase">/ Our Purpose</h3>            
             <p className="text-xl font-bold text-neutral-800 max-w-2xl mx-auto">
                 Our mission is to preserve the history of the black experience, one voice at a time, through the use of AI and other advanced technologies.
             </p>
